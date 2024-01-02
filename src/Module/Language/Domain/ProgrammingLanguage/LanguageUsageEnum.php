@@ -6,6 +6,7 @@ enum LanguageUsageEnum: string
 {
     case WEB = 'web';
     case MOBILE = 'mobile';
+    case DESKTOP = 'desktop';
     case GENERAL = 'general';
     case EMBEDDED = 'embedded';
     case SERVER_SIDE = 'server_side';

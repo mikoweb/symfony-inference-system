@@ -7,6 +7,8 @@ use App\Module\Core\Infrastructure\Dataset\Reader\AbstractCsvDatasetReader;
 use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
 use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageUsageFactory;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use League\Csv\Exception;
 use League\Csv\UnavailableStream;
@@ -51,10 +53,16 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 
     private function createLanguageData(array $row): LanguageData
     {
+        $id = $this->languageIdFactory->createId($row['Intended use']);
+        /** @var LanguageUsageList $usage */
+        $usage = $this->languageUsageFactory
+            ->createList($this->getUsage($row['Imperative']))
+            ->merge($this->getHardCodedUsage($id));
+
         return new LanguageData(
-            id: $this->languageIdFactory->createId($row['Intended use']),
+            id: $id,
             name: $row['Intended use'],
-            usage: $this->languageUsageFactory->createList($this->getUsage($row['Imperative'])),
+            usage: $usage,
             objectOriented: $this->isFeature($row['Object-oriented']),
             functional: $this->isFeature($row['Functional']),
             procedural: $this->isFeature($row['Procedural']),
@@ -75,5 +83,30 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
     private function getUsage(string $usage): array
     {
         return array_map(fn(string $value) => trim($value), explode(',', strtolower($usage)));
+    }
+
+    private function getHardCodedUsage(string $langId): LanguageUsageList
+    {
+        $list = match ($langId) {
+            'swift', 'objective_c' => [LanguageUsageEnum::MOBILE],
+            'c' => [LanguageUsageEnum::EMBEDDED],
+            'c_plus_plus' => [
+                LanguageUsageEnum::GENERAL,
+                LanguageUsageEnum::EMBEDDED,
+                LanguageUsageEnum::MOBILE,
+                LanguageUsageEnum::DESKTOP,
+                LanguageUsageEnum::WEB,
+            ],
+            'c_sharp' => [
+                LanguageUsageEnum::DESKTOP,
+                LanguageUsageEnum::MOBILE,
+            ],
+            'python', 'java', 'visual_basic', 'visual_basic_net' => [
+                LanguageUsageEnum::DESKTOP,
+            ],
+            default => []
+        };
+
+        return new LanguageUsageList($list);
     }
 }
