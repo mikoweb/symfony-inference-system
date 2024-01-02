@@ -9,6 +9,10 @@ final class LanguageIdFactory implements LanguageIdFactoryInterface
 {
     public function createId(string $name): string
     {
-        return u($name)->lower()->snake();
+        return u($name)->lower()
+            ->replace('+', ' plus ')
+            ->replace('#', ' sharp ')
+            ->trim()
+            ->snake();
     }
 }
