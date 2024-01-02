@@ -1,12 +1,13 @@
 {
     "type": "project",
     "license": "proprietary",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ketili/fuzzydm": "dev-master",
         "league/csv": "^9.14",
         "ramsey/collection": "^2.0",
         "symfony/console": "6.4.*",

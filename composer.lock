@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10b4d39e3f5ab37e3a39c071d62cb168",
+    "content-hash": "4a003a1139a33ec2be860a88a0d32cec",
     "packages": [
+        {
+            "name": "ketili/fuzzydm",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/goodot/fuzzy-dm.git",
+                "reference": "7448ea65807644d805dcfcc2828bf424d2792313"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/goodot/fuzzy-dm/zipball/7448ea65807644d805dcfcc2828bf424d2792313",
+                "reference": "7448ea65807644d805dcfcc2828bf424d2792313",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ketili\\": "src",
+                    "ketili\\membership\\": "src/membership",
+                    "ketili\\aggregation\\": "src/aggregation",
+                    "ketili\\membership\\polygon\\": "src/membership/polygon",
+                    "ketili\\membership\\sigmoid\\": "src/membership/sigmoid"
+                },
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Goderdzi Jobadze",
+                    "email": "goderdzi.jobadze@gmail.com"
+                }
+            ],
+            "description": "Fuzzy logic. Decision making lib",
+            "support": {
+                "issues": "https://github.com/goodot/fuzzy-dm/issues",
+                "source": "https://github.com/goodot/fuzzy-dm/tree/master"
+            },
+            "time": "2019-07-20T11:40:09+00:00"
+        },
         {
             "name": "league/csv",
             "version": "9.14.0",
@@ -2904,7 +2952,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
