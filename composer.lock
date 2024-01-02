@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a003a1139a33ec2be860a88a0d32cec",
+    "content-hash": "451987e02ea7a427055611e779243cac",
     "packages": [
         {
             "name": "ketili/fuzzydm",
@@ -433,6 +433,53 @@
                 }
             ],
             "time": "2022-12-31T21:50:55+00:00"
+        },
+        {
+            "name": "richjenks/stats",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/richjenks/stats.git",
+                "reference": "5e5b546fa4c5d3a2c6f82ec41512ab557ed68c61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/richjenks/stats/zipball/5e5b546fa4c5d3a2c6f82ec41512ab557ed68c61",
+                "reference": "5e5b546fa4c5d3a2c6f82ec41512ab557ed68c61",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RichJenks\\Stats\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rich Jenkins",
+                    "email": "github@richjenks.com",
+                    "homepage": "https://richjenks.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Statistics library for non-statistical people",
+            "homepage": "https://github.com/richjenks/stats",
+            "keywords": [
+                "statistics",
+                "stats"
+            ],
+            "support": {
+                "issues": "https://github.com/richjenks/stats/issues",
+                "source": "https://github.com/richjenks/stats/tree/master"
+            },
+            "time": "2020-04-27T16:17:48+00:00"
         },
         {
             "name": "symfony/cache",
@@ -2953,7 +3000,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ketili/fuzzydm": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
