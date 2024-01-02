@@ -21,9 +21,9 @@ final readonly class AppPathResolver
         return $this->getAppPath($this->concatPath('resources', $path));
     }
 
-    public function getPredefinedDataPath(?string $path = null): string
+    public function getDatasetPath(?string $path = null): string
     {
-        return $this->getResourcesPath($this->concatPath('predefined_data', $path));
+        return $this->getResourcesPath($this->concatPath('dataset', $path));
     }
 
     public function concatPath(string $basePath, ?string $path): string
