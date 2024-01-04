@@ -4,6 +4,7 @@ namespace App\Module\LanguageChoice\Domain;
 
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
 use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
+use App\Module\LanguageChoice\Domain\Fuzzy\PopularityLevelEnum;
 
 final readonly class LanguageFilter
 {
@@ -12,6 +13,7 @@ final readonly class LanguageFilter
          * @var LanguageUsageEnum[]|null
          */
         public ?array $usage = null,
-        public ?PerformanceLevelEnum $minimumPerformanceLevel = null
+        public ?PerformanceLevelEnum $minimumPerformanceLevel = null,
+        public ?PopularityLevelEnum $minimumPopularityLevel = null,
     ) {}
 }
