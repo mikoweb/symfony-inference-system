@@ -6,8 +6,7 @@ use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
 use App\Module\Language\Infrastructure\Reader\ProgrammingLanguagesDatasetReader;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
+use Psr\Cache\InvalidArgumentException;
 
 final class GetLanguagesQuery implements GetLanguagesQueryInterface
 {
@@ -18,8 +17,7 @@ final class GetLanguagesQuery implements GetLanguagesQueryInterface
     ) {}
 
     /**
-     * @throws UnavailableStream
-     * @throws Exception
+     * @throws InvalidArgumentException
      *
      * @return ProgrammingLanguagesDataset|LanguageData[]
      */

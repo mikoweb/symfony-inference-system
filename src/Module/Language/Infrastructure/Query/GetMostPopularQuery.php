@@ -5,8 +5,7 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 use App\Module\Language\Infrastructure\Reader\MostPopularDatasetReader;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
+use Psr\Cache\InvalidArgumentException;
 
 final class GetMostPopularQuery implements GetMostPopularQueryInterface
 {
@@ -17,8 +16,7 @@ final class GetMostPopularQuery implements GetMostPopularQueryInterface
     ) {}
 
     /**
-     * @throws UnavailableStream
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function getMostPopular(): MostPopularHashMap
     {

@@ -4,8 +4,7 @@ namespace App\Module\Language\Infrastructure\Query;
 
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
 use App\Module\Language\Domain\Query\GetLanguagesIdsQueryInterface;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
+use Psr\Cache\InvalidArgumentException;
 
 final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
 {
@@ -16,8 +15,7 @@ final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
     ) {}
 
     /**
-     * @throws UnavailableStream
-     * @throws Exception
+     * @throws InvalidArgumentException
      *
      * @return string[]
      */

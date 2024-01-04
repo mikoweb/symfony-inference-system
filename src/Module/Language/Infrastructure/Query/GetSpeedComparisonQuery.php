@@ -8,8 +8,7 @@ use App\Module\Language\Domain\SpeedComparison\SpeedComparisonData;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonList;
 use App\Module\Language\Infrastructure\Reader\SpeedComparisonDatasetReader;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
+use Psr\Cache\InvalidArgumentException;
 
 final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
 {
@@ -26,8 +25,7 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
     ) {}
 
     /**
-     * @throws UnavailableStream
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
     public function getSpeedComparison(): SpeedComparisonHashMap
     {
