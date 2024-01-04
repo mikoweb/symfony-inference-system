@@ -19,16 +19,21 @@ enum PerformanceLevelEnum: int
 
     public static function fromSpeedComparisonValue(float $value): self
     {
-        if ($value < 100) {
+        if ($value < SpeedComparisonPointEnum::VERY_HIGH->value) {
             return self::VERY_HIGH;
-        } elseif ($value < 500) {
+        } elseif ($value < SpeedComparisonPointEnum::HIGH->value) {
             return self::HIGH;
-        } elseif ($value < 1000) {
+        } elseif ($value < SpeedComparisonPointEnum::MEDIUM->value) {
             return self::MEDIUM;
-        } elseif ($value < 3000) {
+        } elseif ($value < SpeedComparisonPointEnum::LOW->value) {
             return self::LOW;
         } else {
             return self::VERY_LOW;
         }
+    }
+
+    public function toSpeedComparisonPoint(): SpeedComparisonPointEnum
+    {
+        return SpeedComparisonPointEnum::fromString($this->name);
     }
 }
