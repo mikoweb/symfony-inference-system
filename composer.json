@@ -11,6 +11,7 @@
         "league/csv": "^9.14",
         "ramsey/collection": "^2.0",
         "richjenks/stats": "^1.0",
+        "symfony/cache": "6.4.*",
         "symfony/console": "6.4.*",
         "symfony/dotenv": "6.4.*",
         "symfony/flex": "^2",

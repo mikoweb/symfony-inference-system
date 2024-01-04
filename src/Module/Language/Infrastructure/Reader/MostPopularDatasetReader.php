@@ -3,14 +3,14 @@
 namespace App\Module\Language\Infrastructure\Reader;
 
 use App\Module\Core\Application\Path\AppPathResolver;
+use App\Module\Core\Infrastructure\Dataset\DatasetCache;
 use App\Module\Core\Infrastructure\Dataset\Reader\AbstractCsvDatasetReader;
 use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
 use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
 use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\MostPopular\MostPopularValue;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
 use DateTime;
+use Psr\Cache\InvalidArgumentException;
 use RichJenks\Stats\Stats;
 
 final class MostPopularDatasetReader extends AbstractCsvDatasetReader
@@ -22,35 +22,37 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
 
     public function __construct(
         private readonly LanguageIdFactory $languageIdFactory,
-        AppPathResolver $pathResolver
+        AppPathResolver $pathResolver,
+        DatasetCache $datasetCache
     ) {
-        parent::__construct($pathResolver);
+        parent::__construct($pathResolver, $datasetCache);
     }
 
     /**
-     * @throws Exception
-     * @throws UnavailableStream
-     *
-     * @return MostPopularHashMap
+     * @throws InvalidArgumentException
      */
     public function loadDataset(): MostPopularHashMap
     {
-        $reader = $this->createReader();
-        $dataset = new MostPopularHashMap();
-        $rows = array_values(iterator_to_array($reader->getRecords()));
-        $dates = $this->getDates($rows);
-        $years = $this->getYears($dates);
+        $path = $this->createDatasetPath();
 
-        if (count($rows) > 0) {
-            $langKeys = $this->getLangKeys($rows[0]);
-            $langIdMap = $this->getLangIdMap($langKeys);
+        return $this->datasetCache->get($path, function () use($path) {
+            $reader = $this->createReader();
+            $dataset = new MostPopularHashMap();
+            $rows = array_values(iterator_to_array($reader->getRecords()));
+            $dates = $this->getDates($rows);
+            $years = $this->getYears($dates);
 
-            foreach ($langIdMap as $key => $langIds) {
-                $this->putLanguage($dataset, $rows, $dates, $years, $key, $langIds);
+            if (count($rows) > 0) {
+                $langKeys = $this->getLangKeys($rows[0]);
+                $langIdMap = $this->getLangIdMap($langKeys);
+
+                foreach ($langIdMap as $key => $langIds) {
+                    $this->putLanguage($dataset, $rows, $dates, $years, $key, $langIds);
+                }
             }
-        }
 
-        return $dataset;
+            return $dataset;
+        });
     }
 
     protected function getDatasetFolderName(): string

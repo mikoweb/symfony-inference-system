@@ -3,6 +3,7 @@
 namespace App\Module\Language\Infrastructure\Reader;
 
 use App\Module\Core\Application\Path\AppPathResolver;
+use App\Module\Core\Infrastructure\Dataset\DatasetCache;
 use App\Module\Core\Infrastructure\Dataset\Reader\AbstractCsvDatasetReader;
 use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
 use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageUsageFactory;
@@ -10,35 +11,38 @@ use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
-use League\Csv\Exception;
-use League\Csv\UnavailableStream;
+use Psr\Cache\InvalidArgumentException;
 
 final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 {
     public function __construct(
         private readonly LanguageIdFactory $languageIdFactory,
         private readonly LanguageUsageFactory $languageUsageFactory,
-        AppPathResolver $pathResolver
+        AppPathResolver $pathResolver,
+        DatasetCache $datasetCache
     ) {
-        parent::__construct($pathResolver);
+        parent::__construct($pathResolver, $datasetCache);
     }
 
     /**
-     * @throws Exception
-     * @throws UnavailableStream
+     * @throws InvalidArgumentException
      *
      * @return ProgrammingLanguagesDataset|LanguageData[]
      */
     public function loadDataset(): ProgrammingLanguagesDataset
     {
-        $reader = $this->createReader();
-        $dataset = new ProgrammingLanguagesDataset();
+        $path = $this->createDatasetPath();
 
-        foreach ($reader->getRecords() as $row) {
-            $dataset->add($this->createLanguageData($row));
-        }
+        return $this->datasetCache->get($path, function () use($path) {
+            $reader = $this->createReader();
+            $dataset = new ProgrammingLanguagesDataset();
 
-        return $dataset;
+            foreach ($reader->getRecords() as $row) {
+                $dataset->add($this->createLanguageData($row));
+            }
+
+            return $dataset;
+        });
     }
 
     protected function getDatasetFolderName(): string
