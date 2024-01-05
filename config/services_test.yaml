@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        public: true
+
+    App\Module\Language\Infrastructure\Query\GetSpeedComparisonQuery:
+        public: true
+        autowire: true
+
+    App\Module\Language\Infrastructure\Query\GetMostPopularQuery:
+        public: true
+        autowire: true
