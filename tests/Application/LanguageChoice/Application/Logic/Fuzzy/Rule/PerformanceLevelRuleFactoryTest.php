@@ -23,29 +23,53 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('r')));
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('ruby')));
 
-        $this->assertResultBetween(0.1, 0.2,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript')));
+        $this->assertResultBetween(
+            0.1,
+            0.2,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript'))
+        );
 
-        $this->assertResultBetween(0.35, 0.5,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('java')));
+        $this->assertResultBetween(
+            0.35,
+            0.5,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('java'))
+        );
 
-        $this->assertResultBetween(0.3, 0.45,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_sharp')));
+        $this->assertResultBetween(
+            0.3,
+            0.45,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_sharp'))
+        );
 
-        $this->assertResultBetween(0.5, 0.7,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('swift')));
+        $this->assertResultBetween(
+            0.5,
+            0.7,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('swift'))
+        );
 
-        $this->assertResultBetween(0.6, 0.8,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('go')));
+        $this->assertResultBetween(
+            0.6,
+            0.8,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('go'))
+        );
 
-        $this->assertResultBetween(0.95, 1.0,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('c')));
+        $this->assertResultBetween(
+            0.95,
+            1.0,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('c'))
+        );
 
-        $this->assertResultBetween(0.95, 1.0,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_plus_plus')));
+        $this->assertResultBetween(
+            0.95,
+            1.0,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_plus_plus'))
+        );
 
-        $this->assertResultBetween(0.95, 1.0,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('rust')));
+        $this->assertResultBetween(
+            0.95,
+            1.0,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('rust'))
+        );
     }
 
     public function testHigh(): void
@@ -56,23 +80,41 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('php')));
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('python')));
 
-        $this->assertResultBetween(0.1, 0.3,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('r')));
+        $this->assertResultBetween(
+            0.1,
+            0.3,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('r'))
+        );
 
-        $this->assertResultBetween(0.7, 0.9,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript')));
+        $this->assertResultBetween(
+            0.7,
+            0.9,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript'))
+        );
 
-        $this->assertResultBetween(0.8, 0.95,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('java')));
+        $this->assertResultBetween(
+            0.8,
+            0.95,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('java'))
+        );
 
-        $this->assertResultBetween(0.8, 0.9,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_sharp')));
+        $this->assertResultBetween(
+            0.8,
+            0.9,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('c_sharp'))
+        );
 
-        $this->assertResultBetween(0.9, 0.97,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('swift')));
+        $this->assertResultBetween(
+            0.9,
+            0.97,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('swift'))
+        );
 
-        $this->assertResultBetween(0.9, 0.97,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('go')));
+        $this->assertResultBetween(
+            0.9,
+            0.97,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('go'))
+        );
 
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('c')));
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('c_plus_plus')));
@@ -87,8 +129,11 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('php')));
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('python')));
 
-        $this->assertResultBetween(0.4, 0.5,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('r')));
+        $this->assertResultBetween(
+            0.4,
+            0.5,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('r'))
+        );
 
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript')));
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('java')));
@@ -109,14 +154,23 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
 
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('ruby')));
 
-        $this->assertResultBetween(0.3, 0.4,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('python')));
+        $this->assertResultBetween(
+            0.3,
+            0.4,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('python'))
+        );
 
-        $this->assertResultBetween(0.6, 0.8,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('php')));
+        $this->assertResultBetween(
+            0.6,
+            0.8,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('php'))
+        );
 
-        $this->assertResultBetween(0.9, 1,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('r')));
+        $this->assertResultBetween(
+            0.9,
+            1,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('r'))
+        );
 
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript')));
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('java')));
@@ -137,14 +191,23 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
 
         $this->assertEquals(0, $this->getRuleResult($minLevel, -$this->getLanguageValue('ruby')));
 
-        $this->assertResultBetween(0.4, 0.6,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('python')));
+        $this->assertResultBetween(
+            0.4,
+            0.6,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('python'))
+        );
 
-        $this->assertResultBetween(0.7, 0.9,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('php')));
+        $this->assertResultBetween(
+            0.7,
+            0.9,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('php'))
+        );
 
-        $this->assertResultBetween(0.9, 1,
-            $this->getRuleResult($minLevel, -$this->getLanguageValue('r')));
+        $this->assertResultBetween(
+            0.9,
+            1,
+            $this->getRuleResult($minLevel, -$this->getLanguageValue('r'))
+        );
 
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('javascript')));
         $this->assertEquals(1, $this->getRuleResult($minLevel, -$this->getLanguageValue('java')));

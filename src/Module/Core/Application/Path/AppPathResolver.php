@@ -3,6 +3,7 @@
 namespace App\Module\Core\Application\Path;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 use function Symfony\Component\String\u;
 
 final readonly class AppPathResolver

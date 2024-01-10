@@ -12,8 +12,8 @@ abstract class AbstractDatasetReader
         protected readonly DatasetCache $datasetCache
     ) {}
 
-    protected abstract function getDatasetFolderName(): string;
-    protected abstract function getDatasetFileName(): string;
+    abstract protected function getDatasetFolderName(): string;
+    abstract protected function getDatasetFileName(): string;
 
     protected function createDatasetPath(): string
     {

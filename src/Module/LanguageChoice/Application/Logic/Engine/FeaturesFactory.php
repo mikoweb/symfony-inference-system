@@ -31,7 +31,7 @@ final class FeaturesFactory
      * @param LanguageFilter $filter
      * @return Feature[]
      */
-    function createFeatures(LanguageFilter $filter): array
+    public function createFeatures(LanguageFilter $filter): array
     {
         $features = [];
 
