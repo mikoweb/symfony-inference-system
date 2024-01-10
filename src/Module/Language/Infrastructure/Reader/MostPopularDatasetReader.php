@@ -35,7 +35,7 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
     {
         $path = $this->createDatasetPath();
 
-        return $this->datasetCache->get($path, function () use ($path) {
+        return $this->datasetCache->get($path, function () {
             $reader = $this->createReader();
             $dataset = new MostPopularHashMap();
             $rows = array_values(iterator_to_array($reader->getRecords()));
@@ -105,7 +105,6 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
     }
 
     /**
-     * @param array $row
      * @return string[]
      */
     private function getLangKeys(array $row): array
@@ -124,7 +123,6 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
     }
 
     /**
-     * @param array $rows
      * @return DateTime[]
      */
     private function getDates(array $rows): array
@@ -134,6 +132,7 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
 
     /**
      * @param DateTime[] $dateColumn
+     *
      * @return int[]
      */
     private function getYears(array $dateColumn): array

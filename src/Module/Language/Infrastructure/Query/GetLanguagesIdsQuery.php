@@ -15,9 +15,9 @@ final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
     ) {}
 
     /**
-     * @throws InvalidArgumentException
-     *
      * @return string[]
+     *
+     * @throws InvalidArgumentException
      */
     public function getIds(): array
     {

@@ -62,7 +62,6 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
     }
 
     /**
-     * @param SpeedComparisonList $speedComparison
      * @return string[]
      */
     private function createSpeedComparisonIds(SpeedComparisonList $speedComparison): array

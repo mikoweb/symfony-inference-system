@@ -236,9 +236,9 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
     private function getRuleResult(PerformanceLevelEnum $minLevel, float $speed): float
     {
         $results = $this->createGenerator()->generate([
-            $this->getFeature($minLevel)
+            $this->getFeature($minLevel),
         ], [
-            new Item('test_lang', ['performance' => $speed])
+            new Item('test_lang', ['performance' => $speed]),
         ]);
 
         return $results[0]->score;

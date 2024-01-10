@@ -23,12 +23,11 @@ final class FeaturesFactory
         $this->strategies = [
             $performanceLevelFeatureStrategy,
             $popularityLevelFeatureStrategy,
-            $userExperienceFeatureStrategy
+            $userExperienceFeatureStrategy,
         ];
     }
 
     /**
-     * @param LanguageFilter $filter
      * @return Feature[]
      */
     public function createFeatures(LanguageFilter $filter): array

@@ -2,7 +2,6 @@
 
 namespace App\Module\Language\Infrastructure\Query;
 
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
 use App\Module\Language\Infrastructure\Reader\ProgrammingLanguagesDatasetReader;
@@ -18,8 +17,6 @@ final class GetLanguagesQuery implements GetLanguagesQueryInterface
 
     /**
      * @throws InvalidArgumentException
-     *
-     * @return ProgrammingLanguagesDataset|LanguageData[]
      */
     public function getLanguages(): ProgrammingLanguagesDataset
     {

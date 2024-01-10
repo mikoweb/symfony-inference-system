@@ -22,8 +22,8 @@ final readonly class ItemsFactory
     ) {}
 
     /**
-     * @param LanguageFilter $filter
      * @param Feature[] $features
+     *
      * @return Item[]
      */
     public function createItems(LanguageFilter $filter, array $features): array
@@ -64,8 +64,6 @@ final readonly class ItemsFactory
 
     /**
      * @param Feature[] $features
-     * @param string $name
-     * @return bool
      */
     private function hasFeature(array $features, string $name): bool
     {
@@ -76,6 +74,7 @@ final readonly class ItemsFactory
     {
         if (!is_null($filter->userExperienceFilterItemList)) {
             $userExperience = $filter->userExperienceFilterItemList->where('langId', $langId);
+
             return !$userExperience->isEmpty()
                 ? UserExperienceLevelEnum::fromString($userExperience->first()->levelName)
                 : UserExperienceLevelEnum::NONE;

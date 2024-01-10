@@ -10,7 +10,7 @@ class FindLanguagesByUsageQuery
 {
     /**
      * @param ProgrammingLanguagesDataset|LanguageData[] $dataset
-     * @param LanguageUsageList $usage
+     *
      * @return ProgrammingLanguagesDataset|LanguageData[]
      */
     public function findByUsage(

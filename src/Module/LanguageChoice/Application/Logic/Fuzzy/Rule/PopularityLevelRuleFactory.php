@@ -33,7 +33,7 @@ final class PopularityLevelRuleFactory implements PopularityLevelRuleFactoryInte
     {
         return [
             'type' => FuzzyTypeEnum::TRAPMF,
-            'points' =>  [0.0, $maxValue, 100.0 , 101.0],
+            'points' => [0.0, $maxValue, 100.0, 101.0],
         ];
     }
 }

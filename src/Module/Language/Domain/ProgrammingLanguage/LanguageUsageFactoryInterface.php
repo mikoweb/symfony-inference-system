@@ -6,7 +6,6 @@ interface LanguageUsageFactoryInterface
 {
     /**
      * @param string[] $usage
-     * @return LanguageUsageList
      */
     public function createList(array $usage): LanguageUsageList;
 }

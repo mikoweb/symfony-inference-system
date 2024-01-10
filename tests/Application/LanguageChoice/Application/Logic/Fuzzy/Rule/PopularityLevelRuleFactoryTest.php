@@ -364,9 +364,9 @@ final class PopularityLevelRuleFactoryTest extends AbstractApplicationTestCase
     private function getRuleResult(PopularityLevelEnum $minLevel, float $popularity): float
     {
         $results = $this->createGenerator()->generate([
-            $this->getFeature($minLevel)
+            $this->getFeature($minLevel),
         ], [
-            new Item('test_lang', ['popularity' => $popularity])
+            new Item('test_lang', ['popularity' => $popularity]),
         ]);
 
         return $results[0]->score;
@@ -388,6 +388,7 @@ final class PopularityLevelRuleFactoryTest extends AbstractApplicationTestCase
     {
         /** @var MostPopularList $mostPopularList */
         $mostPopularList = $this->getMostPopular()->get($langId);
+
         return $mostPopularList->last()->percentageValue;
     }
 

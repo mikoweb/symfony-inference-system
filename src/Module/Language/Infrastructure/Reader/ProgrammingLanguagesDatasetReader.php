@@ -25,15 +25,15 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
     }
 
     /**
-     * @throws InvalidArgumentException
-     *
      * @return ProgrammingLanguagesDataset|LanguageData[]
+     *
+     * @throws InvalidArgumentException
      */
     public function loadDataset(): ProgrammingLanguagesDataset
     {
         $path = $this->createDatasetPath();
 
-        return $this->datasetCache->get($path, function () use ($path) {
+        return $this->datasetCache->get($path, function () {
             $reader = $this->createReader();
             $dataset = new ProgrammingLanguagesDataset();
 
@@ -81,7 +81,6 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
     }
 
     /**
-     * @param string $usage
      * @return string[]
      */
     private function getUsage(string $usage): array

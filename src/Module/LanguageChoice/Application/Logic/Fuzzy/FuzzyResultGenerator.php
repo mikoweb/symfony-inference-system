@@ -13,7 +13,8 @@ final class FuzzyResultGenerator
 {
     /**
      * @param Feature[] $features
-     * @param Item[] $valueItems
+     * @param Item[]    $valueItems
+     *
      * @return Result[]
      *
      * @throws Exception

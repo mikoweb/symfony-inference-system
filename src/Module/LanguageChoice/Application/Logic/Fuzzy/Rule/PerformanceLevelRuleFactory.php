@@ -25,7 +25,7 @@ final class PerformanceLevelRuleFactory implements PerformanceLevelRuleFactoryIn
                 'type' => FuzzyTypeEnum::TRAPMF,
                 'points' =>  [
                     $this->transformValue(SpeedComparisonPointEnum::VERY_HIGH->value * 3),
-                    -65.0 , 0.0, 1.0
+                    -65.0, 0.0, 1.0,
                 ],
             ],
             PerformanceLevelEnum::HIGH => [
@@ -33,7 +33,7 @@ final class PerformanceLevelRuleFactory implements PerformanceLevelRuleFactoryIn
                 'points' =>  [
                     $this->transformValue(SpeedComparisonPointEnum::MEDIUM->value),
                     $this->transformValue(SpeedComparisonPointEnum::VERY_HIGH->value),
-                    0.0, 1.0
+                    0.0, 1.0,
                 ],
             ],
             PerformanceLevelEnum::MEDIUM => [
@@ -41,7 +41,7 @@ final class PerformanceLevelRuleFactory implements PerformanceLevelRuleFactoryIn
                 'points' =>  [
                     $this->transformValue(SpeedComparisonPointEnum::MEDIUM->value),
                     $this->transformValue(SpeedComparisonPointEnum::HIGH->value),
-                    0.0, 1.0
+                    0.0, 1.0,
                 ],
             ],
             PerformanceLevelEnum::LOW => [
@@ -49,7 +49,7 @@ final class PerformanceLevelRuleFactory implements PerformanceLevelRuleFactoryIn
                 'points' =>  [
                     $this->transformValue(SpeedComparisonPointEnum::LOW->value * 3),
                     $this->transformValue(SpeedComparisonPointEnum::HIGH->value),
-                    0.0, 1.0
+                    0.0, 1.0,
                 ],
             ],
             PerformanceLevelEnum::VERY_LOW => [
@@ -57,7 +57,7 @@ final class PerformanceLevelRuleFactory implements PerformanceLevelRuleFactoryIn
                 'points' =>  [
                     $this->transformValue(SpeedComparisonPointEnum::LOW->value * 4),
                     $this->transformValue(SpeedComparisonPointEnum::MEDIUM->value),
-                    0.0, 1.0
+                    0.0, 1.0,
                 ],
             ],
         };

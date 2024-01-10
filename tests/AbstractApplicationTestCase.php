@@ -9,9 +9,6 @@ abstract class AbstractApplicationTestCase extends KernelTestCase
 {
     use ServiceableTrait;
 
-    /**
-     * {@inheritDoc}
-     */
     protected function setUp(): void
     {
         self::bootKernel();

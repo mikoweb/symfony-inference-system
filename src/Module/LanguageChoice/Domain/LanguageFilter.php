@@ -26,7 +26,7 @@ final readonly class LanguageFilter
         $values = [
             $this->minimumPerformanceLevel,
             $this->minimumPopularityLevel,
-            $this->userExperienceFilterItemList
+            $this->userExperienceFilterItemList,
         ];
 
         if ($applyUsage) {
