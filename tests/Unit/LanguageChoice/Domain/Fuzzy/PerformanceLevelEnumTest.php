@@ -10,7 +10,7 @@ final class PerformanceLevelEnumTest extends TestCase
 {
     public function testCases(): void
     {
-        $cases = array_map(fn(PerformanceLevelEnum $enum) => $enum->name, PerformanceLevelEnum::cases());
+        $cases = array_map(fn (PerformanceLevelEnum $enum) => $enum->name, PerformanceLevelEnum::cases());
 
         $this->assertEquals(['VERY_HIGH', 'HIGH', 'MEDIUM', 'LOW', 'VERY_LOW'], $cases);
     }

@@ -28,7 +28,7 @@ final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInte
             } else {
                 /** @var MostPopularList $list */
                 $list = array_values($mostPopular->toArray())[0];
-                self::$maxYear = $list->reduce(fn(int $max, MostPopularValue $value) => max($value->year, $max), 0);
+                self::$maxYear = $list->reduce(fn (int $max, MostPopularValue $value) => max($value->year, $max), 0);
             }
         }
 

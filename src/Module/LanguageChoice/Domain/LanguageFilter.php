@@ -33,6 +33,6 @@ final readonly class LanguageFilter
             $values[] = $this->usage;
         }
 
-        return array_values(array_filter($values, fn($value) => !is_null($value)));
+        return array_values(array_filter($values, fn ($value) => !is_null($value)));
     }
 }

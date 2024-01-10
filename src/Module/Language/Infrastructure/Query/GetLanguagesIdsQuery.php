@@ -23,7 +23,7 @@ final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
     {
         if (is_null(self::$ids)) {
             $languages = $this->getLanguagesQuery->getLanguages();
-            self::$ids = array_map(fn(LanguageData $data) => $data->id, $languages->toArray());
+            self::$ids = array_map(fn (LanguageData $data) => $data->id, $languages->toArray());
         }
 
         return self::$ids;

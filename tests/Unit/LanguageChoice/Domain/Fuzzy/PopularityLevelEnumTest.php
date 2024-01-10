@@ -10,7 +10,7 @@ class PopularityLevelEnumTest extends TestCase
 {
     public function testCases(): void
     {
-        $cases = array_map(fn(PopularityLevelEnum $enum) => $enum->name, PopularityLevelEnum::cases());
+        $cases = array_map(fn (PopularityLevelEnum $enum) => $enum->name, PopularityLevelEnum::cases());
 
         $this->assertEquals(['VERY_HIGH', 'HIGH', 'MEDIUM', 'LOW', 'VERY_LOW'], $cases);
     }

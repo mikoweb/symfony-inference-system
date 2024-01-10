@@ -16,9 +16,8 @@ class FindLanguagesByUsageQuery
     public function findByUsage(
         ProgrammingLanguagesDataset $dataset,
         LanguageUsageList $usage
-    ): ProgrammingLanguagesDataset
-    {
-        return $dataset->filter(function (LanguageData $data) use($usage) {
+    ): ProgrammingLanguagesDataset {
+        return $dataset->filter(function (LanguageData $data) use ($usage) {
             $match = false;
 
             foreach ($usage as $enum) {

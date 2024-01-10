@@ -33,7 +33,7 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
     {
         $path = $this->createDatasetPath();
 
-        return $this->datasetCache->get($path, function () use($path) {
+        return $this->datasetCache->get($path, function () use ($path) {
             $reader = $this->createReader();
             $dataset = new ProgrammingLanguagesDataset();
 
@@ -86,7 +86,7 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
      */
     private function getUsage(string $usage): array
     {
-        return array_map(fn(string $value) => trim($value), explode(',', strtolower($usage)));
+        return array_map(fn (string $value) => trim($value), explode(',', strtolower($usage)));
     }
 
     private function getHardCodedUsage(string $langId): LanguageUsageList

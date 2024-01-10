@@ -32,7 +32,7 @@ final readonly class DatasetCache implements DatasetCacheInterface
     {
         $path = $this->transformPath($datasetPath);
 
-        return $this->cache->get($path, function (ItemInterface $item) use($expiresAfter, $dataFactory) {
+        return $this->cache->get($path, function (ItemInterface $item) use ($expiresAfter, $dataFactory) {
             $item->expiresAfter($expiresAfter ?? $this->getDefaultLifetime());
 
             return $dataFactory();

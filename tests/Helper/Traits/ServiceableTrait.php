@@ -9,8 +9,7 @@ trait ServiceableTrait
     public function getService(
         string $id,
         int $invalidBehavior = ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE
-    ): ?object
-    {
+    ): ?object {
         return static::getContainer()->get($id, $invalidBehavior);
     }
 }

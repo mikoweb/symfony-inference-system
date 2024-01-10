@@ -17,7 +17,7 @@ final class SpeedComparisonDatasetReader extends AbstractDatasetReader
     {
         $path = $this->createDatasetPath();
 
-        return $this->datasetCache->get($path, function () use($path) {
+        return $this->datasetCache->get($path, function () use ($path) {
             if (!file_exists($path)) {
                 throw new FileNotFoundException("Not found $path!");
             }

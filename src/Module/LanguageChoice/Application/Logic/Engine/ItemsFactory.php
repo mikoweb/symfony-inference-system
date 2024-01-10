@@ -69,7 +69,7 @@ final readonly class ItemsFactory
      */
     private function hasFeature(array $features, string $name): bool
     {
-        return !empty(array_filter($features, fn(Feature $feature) => $feature->identifier === $name));
+        return !empty(array_filter($features, fn (Feature $feature) => $feature->identifier === $name));
     }
 
     private function getUserExperienceEnum(LanguageFilter $filter, string $langId): UserExperienceLevelEnum

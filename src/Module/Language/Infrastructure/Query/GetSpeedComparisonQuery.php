@@ -48,8 +48,7 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
         SpeedComparisonList $speedComparison,
         array $speedComparisonIds,
         string $langId
-    ): void
-    {
+    ): void {
         foreach ($speedComparisonIds as $k => $speedComparisonId) {
             if (in_array($speedComparisonId, self::IGNORE)) {
                 continue;
@@ -69,7 +68,7 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
     private function createSpeedComparisonIds(SpeedComparisonList $speedComparison): array
     {
         return array_map(
-            fn(SpeedComparisonData $data) => $this->languageIdFactory->createId($data->langName),
+            fn (SpeedComparisonData $data) => $this->languageIdFactory->createId($data->langName),
             $speedComparison->toArray()
         );
     }
