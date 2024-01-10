@@ -65,6 +65,14 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "code-check": [
+            "./vendor/bin/phpcs",
+            "./vendor/bin/php-cs-fixer check -vvv"
+        ],
+        "code-fix": [
+            "./vendor/bin/phpcbf",
+            "./vendor/bin/php-cs-fixer fix"
         ]
     },
     "conflict": {
