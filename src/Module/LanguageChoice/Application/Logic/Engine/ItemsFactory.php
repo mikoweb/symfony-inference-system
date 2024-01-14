@@ -2,6 +2,8 @@
 
 namespace App\Module\LanguageChoice\Application\Logic\Engine;
 
+use App\Module\Language\Infrastructure\Query\Enum\FindModeEnum;
+use App\Module\Language\Infrastructure\Query\FindLanguagesByFeaturesQuery;
 use App\Module\Language\Infrastructure\Query\FindLanguagesByUsageQuery;
 use App\Module\Language\Infrastructure\Query\GetLanguagesQuery;
 use App\Module\Language\Infrastructure\Query\GetMostPopularQuery;
@@ -17,6 +19,7 @@ final readonly class ItemsFactory
     public function __construct(
         private GetLanguagesQuery $getLanguagesQuery,
         private FindLanguagesByUsageQuery $findLanguagesByUsageQuery,
+        private FindLanguagesByFeaturesQuery $findLanguagesByFeaturesQuery,
         private GetSpeedComparisonQuery $getSpeedComparisonQuery,
         private GetMostPopularQuery $getMostPopularQuery
     ) {}
@@ -34,7 +37,19 @@ final readonly class ItemsFactory
         $mostPopularQuery = $this->getMostPopularQuery->getMostPopular();
 
         if (!is_null($filter->usage)) {
-            $languages = $this->findLanguagesByUsageQuery->findByUsage($languages, $filter->usage);
+            $languages = $this->findLanguagesByUsageQuery->findByUsage(
+                $languages,
+                $filter->usage,
+                FindModeEnum::from($filter->usageMode->value)
+            );
+        }
+
+        if (!is_null($filter->features)) {
+            $languages = $this->findLanguagesByFeaturesQuery->findByFeatures(
+                $languages,
+                $filter->features,
+                FindModeEnum::from($filter->featuresMode->value)
+            );
         }
 
         foreach ($languages as $language) {

@@ -3,25 +3,25 @@
 namespace App\Module\Language\Infrastructure\Query;
 
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageFeatureList;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use App\Module\Language\Infrastructure\Query\Enum\FindModeEnum;
 
-final class FindLanguagesByUsageQuery
+final class FindLanguagesByFeaturesQuery
 {
     /**
      * @param ProgrammingLanguagesDataset|LanguageData[] $dataset
      *
      * @return ProgrammingLanguagesDataset|LanguageData[]
      */
-    public function findByUsage(
+    public function findByFeatures(
         ProgrammingLanguagesDataset $dataset,
-        LanguageUsageList $usage,
+        LanguageFeatureList $features,
         FindModeEnum $findMode,
     ): ProgrammingLanguagesDataset {
         return match ($findMode) {
-            FindModeEnum::AND => $dataset->filterSubCollectionAnd('usage', $usage->toArray()),
-            FindModeEnum::OR => $dataset->filterSubCollectionOr('usage', $usage->toArray())
+            FindModeEnum::AND => $dataset->filterSubCollectionAnd('features', $features->toArray()),
+            FindModeEnum::OR => $dataset->filterSubCollectionOr('features', $features->toArray())
         };
     }
 }

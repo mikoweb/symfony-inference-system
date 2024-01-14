@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Application\LanguageChoice\Application;
+namespace App\Tests\Application\LanguageChoice\Application\Logic\Fuzzy\Rule;
 
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
 use App\Module\Language\Infrastructure\Query\GetSpeedComparisonQuery;

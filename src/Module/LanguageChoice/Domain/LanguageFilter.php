@@ -2,6 +2,7 @@
 
 namespace App\Module\LanguageChoice\Domain;
 
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageFeatureList;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\LanguageChoice\Domain\Filter\UserExperienceFilterItemList;
 use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
@@ -11,6 +12,9 @@ final readonly class LanguageFilter
 {
     public function __construct(
         public ?LanguageUsageList $usage = null,
+        public LanguageFilterModeEnum $usageMode = LanguageFilterModeEnum::AND,
+        public ?LanguageFeatureList $features = null,
+        public LanguageFilterModeEnum $featuresMode = LanguageFilterModeEnum::AND,
         public ?PerformanceLevelEnum $minimumPerformanceLevel = null,
         public ?PopularityLevelEnum $minimumPopularityLevel = null,
         public ?UserExperienceFilterItemList $userExperienceFilterItemList = null
