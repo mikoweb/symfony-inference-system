@@ -5,6 +5,7 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\MostPopular\MostPopularValue;
 use App\Module\Language\Domain\Query\GetMostPopularMaxYearQueryInterface;
+use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 use Psr\Cache\InvalidArgumentException;
 
 final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInterface
@@ -12,7 +13,7 @@ final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInte
     private static ?int $maxYear = null;
 
     public function __construct(
-        private readonly GetMostPopularQuery $getMostPopularQuery,
+        private readonly GetMostPopularQueryInterface $getMostPopularQuery,
     ) {}
 
     /**

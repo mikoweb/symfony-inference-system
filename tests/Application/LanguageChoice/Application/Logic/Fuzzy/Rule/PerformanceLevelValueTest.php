@@ -2,8 +2,8 @@
 
 namespace App\Tests\Application\LanguageChoice\Application\Logic\Fuzzy\Rule;
 
+use App\Module\Language\Domain\Query\GetSpeedComparisonQueryInterface;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
-use App\Module\Language\Infrastructure\Query\GetSpeedComparisonQuery;
 use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
 use App\Tests\AbstractApplicationTestCase;
 
@@ -128,6 +128,6 @@ final class PerformanceLevelValueTest extends AbstractApplicationTestCase
 
     private function getSpeedComparison(): SpeedComparisonHashMap
     {
-        return $this->getService(GetSpeedComparisonQuery::class)->getSpeedComparison();
+        return $this->getService(GetSpeedComparisonQueryInterface::class)->getSpeedComparison();
     }
 }

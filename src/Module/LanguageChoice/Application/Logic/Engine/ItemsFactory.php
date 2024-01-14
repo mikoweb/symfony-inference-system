@@ -2,12 +2,12 @@
 
 namespace App\Module\LanguageChoice\Application\Logic\Engine;
 
+use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
+use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
+use App\Module\Language\Domain\Query\GetSpeedComparisonQueryInterface;
 use App\Module\Language\Infrastructure\Query\Enum\FindModeEnum;
 use App\Module\Language\Infrastructure\Query\FindLanguagesByFeaturesQuery;
 use App\Module\Language\Infrastructure\Query\FindLanguagesByUsageQuery;
-use App\Module\Language\Infrastructure\Query\GetLanguagesQuery;
-use App\Module\Language\Infrastructure\Query\GetMostPopularQuery;
-use App\Module\Language\Infrastructure\Query\GetSpeedComparisonQuery;
 use App\Module\LanguageChoice\Domain\Fuzzy\SpeedComparisonPointEnum;
 use App\Module\LanguageChoice\Domain\Fuzzy\UserExperienceLevelEnum;
 use App\Module\LanguageChoice\Domain\LanguageFilter;
@@ -17,11 +17,11 @@ use ketili\Item;
 final readonly class ItemsFactory
 {
     public function __construct(
-        private GetLanguagesQuery $getLanguagesQuery,
+        private GetLanguagesQueryInterface $getLanguagesQuery,
         private FindLanguagesByUsageQuery $findLanguagesByUsageQuery,
         private FindLanguagesByFeaturesQuery $findLanguagesByFeaturesQuery,
-        private GetSpeedComparisonQuery $getSpeedComparisonQuery,
-        private GetMostPopularQuery $getMostPopularQuery
+        private GetSpeedComparisonQueryInterface $getSpeedComparisonQuery,
+        private GetMostPopularQueryInterface $getMostPopularQuery
     ) {}
 
     /**

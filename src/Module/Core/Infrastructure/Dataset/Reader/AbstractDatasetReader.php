@@ -3,13 +3,13 @@
 namespace App\Module\Core\Infrastructure\Dataset\Reader;
 
 use App\Module\Core\Application\Path\AppPathResolver;
-use App\Module\Core\Infrastructure\Dataset\DatasetCache;
+use App\Module\Core\Domain\Dataset\DatasetCacheInterface;
 
 abstract class AbstractDatasetReader
 {
     public function __construct(
         private readonly AppPathResolver $pathResolver,
-        protected readonly DatasetCache $datasetCache
+        protected readonly DatasetCacheInterface $datasetCache
     ) {}
 
     abstract protected function getDatasetFolderName(): string;

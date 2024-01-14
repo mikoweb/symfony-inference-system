@@ -2,7 +2,8 @@
 
 namespace App\Module\Language\Infrastructure\Query;
 
-use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageIdFactoryInterface;
+use App\Module\Language\Domain\Query\GetLanguagesIdsQueryInterface;
 use App\Module\Language\Domain\Query\GetSpeedComparisonQueryInterface;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonData;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
@@ -19,9 +20,9 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
     private static ?SpeedComparisonHashMap $speedComparison = null;
 
     public function __construct(
-        private readonly GetLanguagesIdsQuery $getLanguagesIdsQuery,
+        private readonly GetLanguagesIdsQueryInterface $getLanguagesIdsQuery,
         private readonly SpeedComparisonDatasetReader $speedComparisonDatasetReader,
-        private readonly LanguageIdFactory $languageIdFactory
+        private readonly LanguageIdFactoryInterface $languageIdFactory
     ) {}
 
     /**

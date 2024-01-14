@@ -2,8 +2,8 @@
 
 namespace App\Tests\Application\LanguageChoice\Application\Logic\Fuzzy\Rule;
 
+use App\Module\Language\Domain\Query\GetSpeedComparisonQueryInterface;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
-use App\Module\Language\Infrastructure\Query\GetSpeedComparisonQuery;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\FuzzyFeatureFactory;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\FuzzyResultGenerator;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\Rule\PerformanceLevelRuleFactory;
@@ -263,6 +263,6 @@ final class PerformanceLevelRuleFactoryTest extends AbstractApplicationTestCase
 
     private function getSpeedComparison(): SpeedComparisonHashMap
     {
-        return $this->getService(GetSpeedComparisonQuery::class)->getSpeedComparison();
+        return $this->getService(GetSpeedComparisonQueryInterface::class)->getSpeedComparison();
     }
 }

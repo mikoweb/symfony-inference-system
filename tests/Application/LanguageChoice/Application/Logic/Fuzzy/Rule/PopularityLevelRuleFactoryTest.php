@@ -4,7 +4,7 @@ namespace App\Tests\Application\LanguageChoice\Application\Logic\Fuzzy\Rule;
 
 use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
 use App\Module\Language\Domain\MostPopular\MostPopularList;
-use App\Module\Language\Infrastructure\Query\GetMostPopularQuery;
+use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\FuzzyFeatureFactory;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\FuzzyResultGenerator;
 use App\Module\LanguageChoice\Application\Logic\Fuzzy\Rule\PopularityLevelRuleFactory;
@@ -394,6 +394,6 @@ final class PopularityLevelRuleFactoryTest extends AbstractApplicationTestCase
 
     private function getMostPopular(): MostPopularHashMap
     {
-        return $this->getService(GetMostPopularQuery::class)->getMostPopular();
+        return $this->getService(GetMostPopularQueryInterface::class)->getMostPopular();
     }
 }

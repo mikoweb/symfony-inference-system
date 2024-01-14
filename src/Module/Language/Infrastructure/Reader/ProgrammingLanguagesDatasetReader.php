@@ -3,12 +3,12 @@
 namespace App\Module\Language\Infrastructure\Reader;
 
 use App\Module\Core\Application\Path\AppPathResolver;
-use App\Module\Core\Infrastructure\Dataset\DatasetCache;
+use App\Module\Core\Domain\Dataset\DatasetCacheInterface;
 use App\Module\Core\Infrastructure\Dataset\Reader\AbstractCsvDatasetReader;
-use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
-use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageUsageFactory;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageIdFactoryInterface;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageFactoryInterface;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use Psr\Cache\InvalidArgumentException;
@@ -16,10 +16,10 @@ use Psr\Cache\InvalidArgumentException;
 final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 {
     public function __construct(
-        private readonly LanguageIdFactory $languageIdFactory,
-        private readonly LanguageUsageFactory $languageUsageFactory,
+        private readonly LanguageIdFactoryInterface $languageIdFactory,
+        private readonly LanguageUsageFactoryInterface $languageUsageFactory,
         AppPathResolver $pathResolver,
-        DatasetCache $datasetCache
+        DatasetCacheInterface $datasetCache
     ) {
         parent::__construct($pathResolver, $datasetCache);
     }

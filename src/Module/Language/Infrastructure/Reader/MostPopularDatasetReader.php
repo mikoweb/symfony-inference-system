@@ -3,12 +3,12 @@
 namespace App\Module\Language\Infrastructure\Reader;
 
 use App\Module\Core\Application\Path\AppPathResolver;
-use App\Module\Core\Infrastructure\Dataset\DatasetCache;
+use App\Module\Core\Domain\Dataset\DatasetCacheInterface;
 use App\Module\Core\Infrastructure\Dataset\Reader\AbstractCsvDatasetReader;
-use App\Module\Language\Application\Logic\ProgrammingLanguage\LanguageIdFactory;
 use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
 use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\MostPopular\MostPopularValue;
+use App\Module\Language\Domain\ProgrammingLanguage\LanguageIdFactoryInterface;
 use DateTime;
 use Psr\Cache\InvalidArgumentException;
 use RichJenks\Stats\Stats;
@@ -21,9 +21,9 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
     ];
 
     public function __construct(
-        private readonly LanguageIdFactory $languageIdFactory,
+        private readonly LanguageIdFactoryInterface $languageIdFactory,
         AppPathResolver $pathResolver,
-        DatasetCache $datasetCache
+        DatasetCacheInterface $datasetCache
     ) {
         parent::__construct($pathResolver, $datasetCache);
     }
