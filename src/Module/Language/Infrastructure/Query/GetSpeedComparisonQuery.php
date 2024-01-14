@@ -17,6 +17,10 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
         'python_pypy',
     ];
 
+    private const array HARD = [
+        'assembly_language' => 67.0,
+    ];
+
     private static ?SpeedComparisonHashMap $speedComparison = null;
 
     public function __construct(
@@ -35,6 +39,10 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
             $speedComparison = $this->speedComparisonDatasetReader->loadDataset();
             $speedComparisonIds = $this->createSpeedComparisonIds($speedComparison);
             self::$speedComparison = new SpeedComparisonHashMap();
+
+            foreach (self::HARD as $id => $value) {
+                self::$speedComparison->put($id, new SpeedComparisonData($id, $value));
+            }
 
             foreach ($langIds as $langId) {
                 $this->putToMap(self::$speedComparison, $speedComparison, $speedComparisonIds, $langId);

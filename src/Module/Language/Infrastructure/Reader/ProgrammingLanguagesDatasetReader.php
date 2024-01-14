@@ -107,6 +107,16 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
             'python', 'java', 'visual_basic', 'visual_basic_net' => [
                 LanguageUsageEnum::DESKTOP,
             ],
+            'assembly_language' => [
+                LanguageUsageEnum::GENERAL,
+                LanguageUsageEnum::EMBEDDED,
+            ],
+            'object_pascal' => [
+                LanguageUsageEnum::GENERAL,
+                LanguageUsageEnum::MOBILE,
+                LanguageUsageEnum::DESKTOP,
+                LanguageUsageEnum::WEB,
+            ],
             default => []
         };
 

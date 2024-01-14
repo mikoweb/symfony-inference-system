@@ -2,7 +2,6 @@
 
 namespace App\Module\LanguageChoice\Application\Logic\Fuzzy;
 
-use ketili\aggregation\ArithmeticMean;
 use ketili\Analyzer;
 use ketili\Feature;
 use ketili\Item;
@@ -21,7 +20,7 @@ final class FuzzyResultGenerator
      */
     public function generate(array $features, array $valueItems): array
     {
-        $analyzer = new Analyzer($features, $valueItems, new ArithmeticMean());
+        $analyzer = new Analyzer($features, $valueItems, new MeanFunction());
         $analyzer->analyze();
 
         return $analyzer->sort() ?? [];
