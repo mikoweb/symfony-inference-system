@@ -1,5 +1,6 @@
 .idea
 composer.phar
+.venv
 
 ###> symfony/framework-bundle ###
 /.env.local
