@@ -1,0 +1,3 @@
+api_language_choice:
+    resource: api/language_choice/language_choice.yaml
+    prefix: /language-choice

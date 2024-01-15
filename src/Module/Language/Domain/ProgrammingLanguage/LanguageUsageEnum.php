@@ -2,8 +2,12 @@
 
 namespace App\Module\Language\Domain\ProgrammingLanguage;
 
+use App\Module\Core\Domain\Enum\GetEnumAllowedValuesTrait;
+
 enum LanguageUsageEnum: string
 {
+    use GetEnumAllowedValuesTrait;
+
     case WEB = 'web';
     case MOBILE = 'mobile';
     case DESKTOP = 'desktop';

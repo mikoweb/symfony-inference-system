@@ -1,0 +1,4 @@
+api_language_choice_inference:
+    path: /inference
+    controller: App\Module\LanguageChoice\Application\Controller\LanguageChoiceController::startInference
+    methods: [POST]

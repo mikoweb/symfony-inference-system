@@ -3,10 +3,12 @@
 namespace App\Module\LanguageChoice\Domain\Fuzzy;
 
 use App\Module\Core\Domain\Enum\EnumFromStringTrait;
+use App\Module\Core\Domain\Enum\GetEnumAllowedValuesTrait;
 
 enum PerformanceLevelEnum: int
 {
     use EnumFromStringTrait;
+    use GetEnumAllowedValuesTrait;
 
     case VERY_HIGH = 400;
     case HIGH = 300;
