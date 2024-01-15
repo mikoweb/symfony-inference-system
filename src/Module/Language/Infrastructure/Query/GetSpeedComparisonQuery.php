@@ -9,7 +9,6 @@ use App\Module\Language\Domain\SpeedComparison\SpeedComparisonData;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonHashMap;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonList;
 use App\Module\Language\Infrastructure\Reader\SpeedComparisonDatasetReader;
-use Psr\Cache\InvalidArgumentException;
 
 final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
 {
@@ -29,9 +28,6 @@ final class GetSpeedComparisonQuery implements GetSpeedComparisonQueryInterface
         private readonly LanguageIdFactoryInterface $languageIdFactory
     ) {}
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function getSpeedComparison(): SpeedComparisonHashMap
     {
         if (is_null(self::$speedComparison)) {

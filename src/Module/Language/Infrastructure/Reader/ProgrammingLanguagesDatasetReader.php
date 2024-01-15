@@ -11,7 +11,6 @@ use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageFactoryInterface;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
-use Psr\Cache\InvalidArgumentException;
 
 final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 {
@@ -26,8 +25,6 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 
     /**
      * @return ProgrammingLanguagesDataset|LanguageData[]
-     *
-     * @throws InvalidArgumentException
      */
     public function loadDataset(): ProgrammingLanguagesDataset
     {

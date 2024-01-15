@@ -5,7 +5,6 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 use App\Module\Language\Domain\Query\GetMostPopularYearRankingQueryInterface;
-use Psr\Cache\InvalidArgumentException;
 use Ramsey\Collection\Sort;
 
 final class GetMostPopularYearRankingQuery implements GetMostPopularYearRankingQueryInterface
@@ -16,9 +15,6 @@ final class GetMostPopularYearRankingQuery implements GetMostPopularYearRankingQ
         private readonly GetMostPopularQueryInterface $getMostPopularQuery,
     ) {}
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function getRanking(int $year): MostPopularList
     {
         if (is_null(self::$list)) {

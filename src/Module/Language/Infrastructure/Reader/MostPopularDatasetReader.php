@@ -10,7 +10,6 @@ use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\MostPopular\MostPopularValue;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageIdFactoryInterface;
 use DateTime;
-use Psr\Cache\InvalidArgumentException;
 use RichJenks\Stats\Stats;
 
 final class MostPopularDatasetReader extends AbstractCsvDatasetReader
@@ -28,9 +27,6 @@ final class MostPopularDatasetReader extends AbstractCsvDatasetReader
         parent::__construct($pathResolver, $datasetCache);
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function loadDataset(): MostPopularHashMap
     {
         $path = $this->createDatasetPath();

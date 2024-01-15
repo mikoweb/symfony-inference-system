@@ -5,14 +5,10 @@ namespace App\Module\Language\Infrastructure\Reader;
 use App\Module\Core\Infrastructure\Dataset\Reader\AbstractDatasetReader;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonData;
 use App\Module\Language\Domain\SpeedComparison\SpeedComparisonList;
-use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 final class SpeedComparisonDatasetReader extends AbstractDatasetReader
 {
-    /**
-     * @throws InvalidArgumentException
-     */
     public function loadDataset(): SpeedComparisonList
     {
         $path = $this->createDatasetPath();

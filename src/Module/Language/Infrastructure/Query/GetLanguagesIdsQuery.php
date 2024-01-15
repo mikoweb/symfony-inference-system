@@ -5,7 +5,6 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageData;
 use App\Module\Language\Domain\Query\GetLanguagesIdsQueryInterface;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
-use Psr\Cache\InvalidArgumentException;
 
 final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
 {
@@ -17,8 +16,6 @@ final class GetLanguagesIdsQuery implements GetLanguagesIdsQueryInterface
 
     /**
      * @return string[]
-     *
-     * @throws InvalidArgumentException
      */
     public function getIds(): array
     {

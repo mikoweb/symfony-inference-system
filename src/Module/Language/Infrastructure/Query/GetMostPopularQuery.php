@@ -5,7 +5,6 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 use App\Module\Language\Infrastructure\Reader\MostPopularDatasetReader;
-use Psr\Cache\InvalidArgumentException;
 
 final class GetMostPopularQuery implements GetMostPopularQueryInterface
 {
@@ -15,9 +14,6 @@ final class GetMostPopularQuery implements GetMostPopularQueryInterface
         private readonly MostPopularDatasetReader $mostPopularDatasetReader
     ) {}
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function getMostPopular(): MostPopularHashMap
     {
         if (is_null(self::$mostPopular)) {

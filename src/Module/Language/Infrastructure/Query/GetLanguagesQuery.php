@@ -5,7 +5,6 @@ namespace App\Module\Language\Infrastructure\Query;
 use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
 use App\Module\Language\Infrastructure\Reader\ProgrammingLanguagesDatasetReader;
-use Psr\Cache\InvalidArgumentException;
 
 final class GetLanguagesQuery implements GetLanguagesQueryInterface
 {
@@ -15,9 +14,6 @@ final class GetLanguagesQuery implements GetLanguagesQueryInterface
         private readonly ProgrammingLanguagesDatasetReader $programmingLanguagesDatasetReader
     ) {}
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function getLanguages(): ProgrammingLanguagesDataset
     {
         if (is_null(self::$languages)) {

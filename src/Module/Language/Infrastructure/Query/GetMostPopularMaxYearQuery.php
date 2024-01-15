@@ -6,7 +6,6 @@ use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\MostPopular\MostPopularValue;
 use App\Module\Language\Domain\Query\GetMostPopularMaxYearQueryInterface;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
-use Psr\Cache\InvalidArgumentException;
 
 final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInterface
 {
@@ -16,9 +15,6 @@ final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInte
         private readonly GetMostPopularQueryInterface $getMostPopularQuery,
     ) {}
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function getMaxYear(): int
     {
         if (is_null(self::$maxYear)) {
