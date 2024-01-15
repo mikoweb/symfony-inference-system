@@ -15,6 +15,7 @@ return (new PhpCsFixer\Config())
         'class_attributes_separation' => false,
         'concat_space' => false,
         'nullable_type_declaration_for_default_null_value' => true,
+        'method_argument_space' => false,
     ])
     ->setFinder($finder)
 ;
