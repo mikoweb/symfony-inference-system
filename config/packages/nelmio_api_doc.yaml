@@ -1,0 +1,13 @@
+when@dev:
+    nelmio_api_doc:
+        documentation:
+            info:
+                title: Symfony Inference System API
+                description: API
+                version: 0.0.1
+        areas:
+            default:
+                path_patterns:
+                    - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
+                #other_api:
+                #path_patterns: [ ^/other-api/ ]
