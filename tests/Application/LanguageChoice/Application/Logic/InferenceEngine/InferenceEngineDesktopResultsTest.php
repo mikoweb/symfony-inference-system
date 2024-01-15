@@ -20,7 +20,6 @@ final class InferenceEngineDesktopResultsTest extends AbstractInferenceEngineTes
 
         $results = $this->getEngine()->createResults($filter);
 
-
         $this->assertCount(7, $results);
         $this->assertCountResultNonZero(6, $results);
 

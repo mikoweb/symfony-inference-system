@@ -5,7 +5,6 @@ namespace App\Tests\Application\LanguageChoice\Application\Logic\InferenceEngine
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
 use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
-use App\Module\LanguageChoice\Domain\Fuzzy\PopularityLevelEnum;
 use App\Module\LanguageChoice\Domain\LanguageFilter;
 
 final class InferenceEngineEmbeddedResultsTest extends AbstractInferenceEngineTest
