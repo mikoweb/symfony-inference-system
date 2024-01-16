@@ -11,6 +11,11 @@ final class ProgrammingLanguagesDataset extends AbstractCollection
         return LanguageData::class;
     }
 
+    public function findLanguageById(string $langId): ?LanguageData
+    {
+        return $this->where('id', $langId)[0] ?? null;
+    }
+
     public function filterSubCollectionOr(string $subCollectionProperty, array $values): self
     {
         /** @var ProgrammingLanguagesDataset $data */

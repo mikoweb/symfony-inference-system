@@ -12,6 +12,7 @@ use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
 use App\Module\LanguageChoice\Domain\Fuzzy\PopularityLevelEnum;
 use App\Module\LanguageChoice\Domain\LanguageFilter;
 use App\Module\LanguageChoice\Domain\LanguageFilterModeEnum;
+use Symfony\Component\Serializer\Attribute\Ignore;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -82,6 +83,7 @@ final readonly class LanguageFilterDto
         );
     }
 
+    #[Ignore]
     public function isSubmitted(): bool
     {
         foreach (self::NULLABLE_PROPERTIES as $property) {
