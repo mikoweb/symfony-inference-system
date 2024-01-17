@@ -16,6 +16,13 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 {
     private const array HARD_CODED_FEATURE = [
         'php' => ['Reflective' => true],
+        'assembly_language' => [
+            'Object-oriented' => false,
+            'Functional' => false,
+            'Procedural' => true,
+            'Reflective' => false,
+            'Event-driven' => false,
+        ],
     ];
 
     public function __construct(
