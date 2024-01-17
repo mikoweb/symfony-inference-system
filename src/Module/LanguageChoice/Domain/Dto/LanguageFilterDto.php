@@ -75,8 +75,12 @@ final readonly class LanguageFilterDto
                     array_map(fn (string $value) => LanguageFeatureEnum::from($value), $this->features)
                 ) : null,
             featuresMode: LanguageFilterModeEnum::from($this->featuresMode),
-            minimumPerformanceLevel: PerformanceLevelEnum::tryFrom($this->minimumPerformanceLevel),
-            minimumPopularityLevel: PopularityLevelEnum::tryFrom($this->minimumPopularityLevel),
+            minimumPerformanceLevel: !is_null($this->minimumPerformanceLevel)
+                ? PerformanceLevelEnum::tryFrom($this->minimumPerformanceLevel)
+                : null,
+            minimumPopularityLevel: !is_null($this->minimumPopularityLevel)
+                ? PopularityLevelEnum::tryFrom($this->minimumPopularityLevel)
+                : null,
             userExperienceFilterItemList: !is_null($this->userExperienceFilterItemList)
                 ? new UserExperienceFilterItemList($this->userExperienceFilterItemList)
                 : null,
