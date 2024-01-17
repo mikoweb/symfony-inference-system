@@ -1,15 +1,20 @@
 <div class="app-language-choice-form">
-  <form>
+  <form [formGroup]="form">
     <div class="row">
       <div class="col-6">
-        <ion-select label="Zastosowanie" [multiple]="true" label-placement="floating">
+        <ion-select
+          label="Zastosowanie"
+          [multiple]="true"
+          formControlName="usage"
+          placeholder="wybierz zastosowanie"
+          (ionChange)="clearEmptyValue($event, 'usage')">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
         </ion-select>
       </div>
       <div class="col-6">
-        <ion-select value="and" label="Metoda" label-placement="floating">
+        <ion-select label="Metoda" label-placement="floating" formControlName="usageMode">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
@@ -18,14 +23,19 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <ion-select label="Cechy" [multiple]="true" label-placement="floating">
+        <ion-select
+          label="Cechy"
+          [multiple]="true"
+          formControlName="features"
+          placeholder="wybierz cechy"
+          (ionChange)="clearEmptyValue($event, 'features')">
           <ng-template ngFor let-option [ngForOf]="options?.get('featuresOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
         </ion-select>
       </div>
       <div class="col-6">
-        <ion-select value="and" label="Metoda" label-placement="floating">
+        <ion-select label="Metoda" label-placement="floating" formControlName="featuresMode">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
@@ -34,14 +44,24 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <ion-select label="Minimalna wydajność" label-placement="floating">
+        <ion-select
+          label="Minimalna wydajność"
+          label-placement="floating"
+          formControlName="minimumPerformanceLevel"
+          interface="action-sheet">
+          <ion-select-option [value]="null">---</ion-select-option>
           <ng-template ngFor let-option [ngForOf]="options?.get('minimumPerformanceLevelOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
         </ion-select>
       </div>
       <div class="col-6">
-        <ion-select label="Minimalna popularność" label-placement="floating">
+        <ion-select
+          label="Minimalna popularność"
+          label-placement="floating"
+          formControlName="minimumPopularityLevel"
+          interface="action-sheet">
+          <ion-select-option [value]="null">---</ion-select-option>
           <ng-template ngFor let-option [ngForOf]="options?.get('minimumPopularityLevelOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
@@ -49,7 +69,7 @@
       </div>
     </div>
     <div class="app-language-choice-form__button">
-      <ion-button fill="outline">Znajdź optymalny</ion-button>
+      <ion-button fill="outline" (click)="onSubmit()" [disabled]="!isFilled()">Znajdź optymalny</ion-button>
     </div>
   </form>
 </div>

@@ -6,7 +6,7 @@ import LanguageFilterOptionsDto from '@app/module/language-choice/domain/dto/lan
 import GetLanguageFilterOptionsQuery
   from '@app/module/language-choice/infrastructure/query/get-language-filter-options-query';
 import { IonicModule } from '@ionic/angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgForOf } from '@angular/common';
 
 const { encapsulation, schemas } = customElementParams;
@@ -26,6 +26,22 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
 
   protected options?: LanguageFilterOptionsDto;
 
+  protected readonly form = new FormGroup({
+    usage: new FormControl(),
+    usageMode: new FormControl(),
+    features: new FormControl(),
+    featuresMode: new FormControl(),
+    minimumPerformanceLevel: new FormControl(),
+    minimumPopularityLevel: new FormControl(),
+  });
+
+  private readonly nullableProperties: string[] = [
+    'usage',
+    'features',
+    'minimumPerformanceLevel',
+    'minimumPopularityLevel'
+  ];
+
   constructor(
     ele: ElementRef,
     gsl: GlobalStyleLoader,
@@ -39,6 +55,35 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
   }
 
   async ngOnInit(): Promise<void> {
+    this.form.get('usageMode')?.setValue('and');
+    this.form.get('featuresMode')?.setValue('and');
     this.options = await this.optionsQuery.getOptions();
+  }
+
+  public isFilled(): boolean {
+    for (const property of this.nullableProperties) {
+      const value = this.form.get(property)?.value;
+
+      if (value !== null) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  protected async onSubmit(): Promise<void> {
+    if (this.isFilled()) {
+      // TODO
+      console.log(this.form.value);
+    }
+  }
+
+  protected clearEmptyValue(event: any, propertyName: string): void {
+    const value = event.detail.value;
+
+    if (Array.isArray(value) && value.length === 0) {
+      this.form.get(propertyName)?.setValue(null);
+    }
   }
 }
