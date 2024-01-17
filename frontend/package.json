@@ -34,6 +34,7 @@
     "@material/mwc-icon-button": "^0.27.0",
     "@tshio/command-bus": "^1.0.4",
     "@types/uuid": "^9.0.2",
+    "axios": "^1.6.5",
     "bootstrap": "^5.3.1",
     "ionicons": "^7.0.0",
     "jquery": "^3.7.0",
