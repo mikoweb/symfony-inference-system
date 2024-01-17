@@ -14,6 +14,10 @@ use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 
 final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
 {
+    private const array HARD_CODED_FEATURE = [
+        'php' => ['Reflective' => true],
+    ];
+
     public function __construct(
         private readonly LanguageIdFactoryInterface $languageIdFactory,
         private readonly LanguageUsageFactoryInterface $languageUsageFactory,
@@ -64,12 +68,17 @@ final class ProgrammingLanguagesDatasetReader extends AbstractCsvDatasetReader
             id: $id,
             name: $row['Intended use'],
             usage: $usage,
-            objectOriented: $this->isFeature($row['Object-oriented']),
-            functional: $this->isFeature($row['Functional']),
-            procedural: $this->isFeature($row['Procedural']),
-            reflective: $this->isFeature($row['Reflective']),
-            eventDriven: $this->isFeature($row['Event-driven']),
+            objectOriented: $this->getFeature($id, 'Object-oriented', $row),
+            functional: $this->getFeature($id, 'Functional', $row),
+            procedural: $this->getFeature($id, 'Procedural', $row),
+            reflective: $this->getFeature($id, 'Reflective', $row),
+            eventDriven: $this->getFeature($id, 'Event-driven', $row),
         );
+    }
+
+    private function getFeature(string $langId, string $featureName, array $row): bool
+    {
+        return self::HARD_CODED_FEATURE[$langId][$featureName] ?? $this->isFeature($row[$featureName]);
     }
 
     private function isFeature(string $value): bool
