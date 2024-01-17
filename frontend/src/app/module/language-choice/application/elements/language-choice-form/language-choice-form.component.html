@@ -3,10 +3,10 @@
     <div class="row">
       <div class="col-6">
         <ion-select
-          label="Zastosowanie"
+          label="{{ 'language_choice_form.usage' | translate }}"
           [multiple]="true"
           formControlName="usage"
-          placeholder="wybierz zastosowanie"
+          placeholder="{{ 'language_choice_form.choice_usage' | translate }}"
           (ionChange)="clearEmptyValue($event, 'usage')">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
@@ -14,7 +14,10 @@
         </ion-select>
       </div>
       <div class="col-6">
-        <ion-select label="Metoda" label-placement="floating" formControlName="usageMode">
+        <ion-select
+          label="{{ 'language_choice_form.method' | translate }}"
+          label-placement="floating"
+          formControlName="usageMode">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
@@ -24,10 +27,10 @@
     <div class="row">
       <div class="col-6">
         <ion-select
-          label="Cechy"
+          label="{{ 'language_choice_form.features' | translate }}"
           [multiple]="true"
           formControlName="features"
-          placeholder="wybierz cechy"
+          placeholder="{{ 'language_choice_form.choice_features' | translate }}"
           (ionChange)="clearEmptyValue($event, 'features')">
           <ng-template ngFor let-option [ngForOf]="options?.get('featuresOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
@@ -35,7 +38,10 @@
         </ion-select>
       </div>
       <div class="col-6">
-        <ion-select label="Metoda" label-placement="floating" formControlName="featuresMode">
+        <ion-select
+          label="{{ 'language_choice_form.method' | translate }}"
+          label-placement="floating"
+          formControlName="featuresMode">
           <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
             <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
           </ng-template>
@@ -45,7 +51,7 @@
     <div class="row">
       <div class="col-6">
         <ion-select
-          label="Minimalna wydajność"
+          label="{{ 'language_choice_form.minimumPerformance' | translate }}"
           label-placement="floating"
           formControlName="minimumPerformanceLevel"
           interface="action-sheet">
@@ -57,7 +63,7 @@
       </div>
       <div class="col-6">
         <ion-select
-          label="Minimalna popularność"
+          label="{{ 'language_choice_form.minimumPopularity' | translate }}"
           label-placement="floating"
           formControlName="minimumPopularityLevel"
           interface="action-sheet">
@@ -69,7 +75,12 @@
       </div>
     </div>
     <div class="app-language-choice-form__button">
-      <ion-button fill="outline" (click)="onSubmit()" [disabled]="!isFilled()">Znajdź optymalny</ion-button>
+      <ion-button
+        fill="outline"
+        (click)="onSubmit()"
+        [disabled]="!isFilled() && !formDisabled">
+        {{ 'language_choice_form.button' | translate }}
+      </ion-button>
     </div>
   </form>
 </div>

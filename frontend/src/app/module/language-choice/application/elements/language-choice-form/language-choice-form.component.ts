@@ -8,6 +8,10 @@ import GetLanguageFilterOptionsQuery
 import { IonicModule } from '@ionic/angular';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgForOf } from '@angular/common';
+import CommandBus from '@app/module/core/application/command-bus/command-bus';
+import SubmitLanguageChoiceFormCommand
+  from '@app/module/language-choice/application/command/submit-language-choice-form-command';
+import { TranslateModule } from '@ngx-translate/core';
 
 const { encapsulation, schemas } = customElementParams;
 
@@ -18,13 +22,14 @@ const { encapsulation, schemas } = customElementParams;
   standalone: true,
   encapsulation,
   schemas,
-  imports: [IonicModule, ReactiveFormsModule, NgForOf],
+  imports: [IonicModule, ReactiveFormsModule, NgForOf, TranslateModule],
 })
 @CustomElement()
 export class LanguageChoiceFormComponent extends CustomElementBaseComponent implements OnInit {
   public static override readonly customElementName: string = 'app-language-choice-form';
 
   protected options?: LanguageFilterOptionsDto;
+  protected formDisabled: boolean = false;
 
   protected readonly form = new FormGroup({
     usage: new FormControl(),
@@ -45,7 +50,8 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
   constructor(
     ele: ElementRef,
     gsl: GlobalStyleLoader,
-    private readonly optionsQuery: GetLanguageFilterOptionsQuery
+    private readonly optionsQuery: GetLanguageFilterOptionsQuery,
+    private readonly commandBus: CommandBus
   ) {
     super(ele, gsl);
   }
@@ -74,8 +80,9 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
 
   protected async onSubmit(): Promise<void> {
     if (this.isFilled()) {
-      // TODO
-      console.log(this.form.value);
+      this.formDisabled = true;
+      await this.commandBus.execute(new SubmitLanguageChoiceFormCommand(this.form.value));
+      this.formDisabled = false;
     }
   }
 
