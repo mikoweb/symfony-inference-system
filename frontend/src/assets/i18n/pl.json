@@ -1,0 +1,22 @@
+{
+  "api_client": {
+    "common_validation_error": "Błąd walidacji!"
+  },
+  "404_page": {
+    "title": "404 Code",
+    "description": "Nie znaleziono strony!"
+  },
+  "default_page": {
+    "form_title": "Kryteria"
+  },
+  "language_choice_form": {
+    "usage": "Zastosowanie",
+    "choice_usage": "wybierz zastosowanie",
+    "method": "Metoda",
+    "features": "Cechy",
+    "choice_features": "wybierz cechy",
+    "minimumPerformance": "Minimalna wydajność",
+    "minimumPopularity": "Minimalna popularność",
+    "button": "Znajdź optymalny"
+  }
+}

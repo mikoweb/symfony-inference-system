@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  defaultLanguage: 'pl',
   apiBaseUrl: 'http://symfony-inference-system-api.dev'
 };
 
