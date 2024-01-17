@@ -1,0 +1,55 @@
+<div class="app-language-choice-form">
+  <form>
+    <div class="row">
+      <div class="col-6">
+        <ion-select label="Zastosowanie" [multiple]="true" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('usageOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+      <div class="col-6">
+        <ion-select value="and" label="Metoda" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <ion-select label="Cechy" [multiple]="true" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('featuresOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+      <div class="col-6">
+        <ion-select value="and" label="Metoda" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('usageModeOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <ion-select label="Minimalna wydajność" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('minimumPerformanceLevelOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+      <div class="col-6">
+        <ion-select label="Minimalna popularność" label-placement="floating">
+          <ng-template ngFor let-option [ngForOf]="options?.get('minimumPopularityLevelOptions')" let-i="index">
+            <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+          </ng-template>
+        </ion-select>
+      </div>
+    </div>
+    <div class="app-language-choice-form__button">
+      <ion-button fill="outline">Znajdź optymalny</ion-button>
+    </div>
+  </form>
+</div>

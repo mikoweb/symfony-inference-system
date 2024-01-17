@@ -1,0 +1,15 @@
+@import "../../../../style/variables";
+
+.app-language-choice-form {
+  margin-bottom: 25px;
+
+  &__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid $md-grey-300;
+    border-bottom: 1px solid $md-grey-300;
+  }
+}
