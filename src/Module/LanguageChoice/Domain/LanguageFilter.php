@@ -20,12 +20,12 @@ final readonly class LanguageFilter
         public ?UserExperienceFilterItemList $userExperienceFilterItemList = null
     ) {}
 
-    public function isSubmitted(bool $applyUsage = true): bool
+    public function isSubmitted(bool $applyUsage = true, bool $applyFeatures = true): bool
     {
-        return !empty($this->getNonNullValues($applyUsage));
+        return !empty($this->getNonNullValues($applyUsage, $applyFeatures));
     }
 
-    private function getNonNullValues(bool $applyUsage = true): array
+    private function getNonNullValues(bool $applyUsage = true, bool $applyFeatures = true): array
     {
         $values = [
             $this->minimumPerformanceLevel,
@@ -35,6 +35,10 @@ final readonly class LanguageFilter
 
         if ($applyUsage) {
             $values[] = $this->usage;
+        }
+
+        if ($applyFeatures) {
+            $values[] = $this->features;
         }
 
         return array_values(array_filter($values, fn ($value) => !is_null($value)));
