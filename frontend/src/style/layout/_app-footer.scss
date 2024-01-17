@@ -1,0 +1,11 @@
+@import "../app-variables";
+
+.app-footer {
+  display: block;
+  background: $md-grey-900;
+  color: #fff;
+  margin-top: $app-layout-margin;
+  padding: $app-layout-margin;
+  text-align: center;
+  font-size: 1.2rem;
+}

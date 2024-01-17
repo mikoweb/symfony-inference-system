@@ -1,0 +1,8 @@
+@import "app-variables";
+
+ion-app, .ion-page {
+  display: block;
+  position: static;
+  overflow: visible;
+  contain: none;
+}

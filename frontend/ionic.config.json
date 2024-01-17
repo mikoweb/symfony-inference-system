@@ -1,0 +1,7 @@
+{
+  "name": "ionic-angular-site",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

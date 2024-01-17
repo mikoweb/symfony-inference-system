@@ -1,0 +1,41 @@
+@import "../app-variables";
+@import "material-colors/dist/colors.sass";
+
+// Put variables to override
+
+$font-family-sans-serif: $app-primary-font-family !default;
+
+// scss-docs-start theme-color-variables
+$primary:       $app-primary-color !default;
+$secondary:     $md-grey-400 !default;
+$success:       $md-green-500 !default;
+$info:          $md-blue-400 !default;
+$warning:       $md-yellow-300 !default;
+$danger:        $md-red-800 !default;
+$light:         $md-grey-200 !default;
+$dark:          $md-grey-900 !default;
+// scss-docs-end theme-color-variables
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) !default;
+// scss-docs-end theme-colors-map
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+// scss-docs-end grid-breakpoints

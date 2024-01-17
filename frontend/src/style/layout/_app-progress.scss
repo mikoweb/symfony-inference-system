@@ -1,0 +1,14 @@
+.app-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $app-header-z-index + 1;
+  display: none;
+  width: 100%;
+  height: 4px;
+  background-color: #e6e6e6;
+
+  &.active {
+    display: block;
+  }
+}

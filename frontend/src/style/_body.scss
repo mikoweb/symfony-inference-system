@@ -1,0 +1,13 @@
+@import "app-variables";
+
+body {
+  padding-top: $app-body-padding-top;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  &.backdrop-no-scroll {
+    overflow: visible;
+  }
+}

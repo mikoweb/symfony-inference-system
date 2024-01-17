@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <script>document.querySelector('html').classList.remove('no-js');</script>
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
+
+  <base href="/" />
+
+  <meta name="color-scheme" content="light" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+</head>
+<body>
+  <ion-progress-bar id="app-progress" class="app-progress active" color="tertiary" wc-ready></ion-progress-bar>
+  <header class="app-header">
+    <div class="app-header-toolbar">
+      <div class="container">
+        <app-icon-button
+          wc-lazy
+          name="reorder-three-outline"
+          class="app-header-toolbar__item app-drawer-toggle"
+          data-drawer-id="app-drawer"
+          aria-label="Open menu"
+          role="button">
+        </app-icon-button>
+        <h1 class="app-header-toolbar__item app-header__title">App Name</h1>
+        <app-icon-button
+          wc-lazy
+          name="person-outline"
+          class="app-header-toolbar__item app-header-toolbar__user-menu-activator"
+          id="user-menu-activator"
+          aria-label="Open user menu"
+          role="button">
+        </app-icon-button>
+        <ion-popover wc-lazy trigger="user-menu-activator" triggerAction="click" side="bottom" alignment="start">
+          <ion-content class="ion-padding">
+            <app-user-full-name-display></app-user-full-name-display>
+          </ion-content>
+        </ion-popover>
+      </div>
+    </div>
+  </header>
+  <mwc-drawer type="modal" wc-hidden class="app-drawer no-js-hidden" id="app-drawer">
+    <div class="app-drawer__top-bar">
+      <div class="app-drawer__top-bar-item">
+        <app-icon-button
+          name="reorder-three-outline"
+          class="app-drawer-toggle"
+          data-drawer-id="app-drawer"
+          aria-label="Open Menu"
+          role="button">
+        </app-icon-button>
+      </div>
+      <div class="app-drawer__top-bar-item">
+        <span>Menu</span>
+      </div>
+    </div>
+    <div class="app-drawer__content">
+      <app-nav>
+        <nav class="app-drawer__nav">
+          <ion-accordion-group value="demo-pages">
+            <ion-accordion value="demo-pages">
+              <ion-item slot="header" color="light">
+                <ion-label role="heading">Strony Demo</ion-label>
+              </ion-item>
+              <ion-list slot="content">
+                <ul>
+                  <li>
+                    <ion-item button>
+                      <a href="/page/cards-demo">Cards Demo</a>
+                    </ion-item>
+                  </li>
+                  <li>
+                    <ion-item button>
+                      <a href="/page/user-data">User data</a>
+                    </ion-item>
+                  </li>
+                  <li>
+                    <ion-item button>
+                      <a href="/page/lorem-ipsum">Lorem Ipsum Page</a>
+                    </ion-item>
+                  </li>
+                </ul>
+              </ion-list>
+            </ion-accordion>
+          </ion-accordion-group>
+        </nav>
+      </app-nav>
+    </div>
+  </mwc-drawer>
+  <ion-app>
+    <main>
+      <app-root></app-root>
+      <noscript>
+        <br />
+        <p class="ion-text-center h5">This site requires JavaScript!</p>
+      </noscript>
+    </main>
+  </ion-app>
+  <footer class="app-footer">
+    <span>Footer</span>
+  </footer>
+</body>
+</html>

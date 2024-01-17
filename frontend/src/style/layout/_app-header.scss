@@ -1,0 +1,43 @@
+@import "../app-variables";
+
+.app-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $app-header-z-index;
+
+  &__title {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+}
+
+.app-header-toolbar {
+  height: $app-header-height;
+  background: $app-primary-color;
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1.5;
+
+  > .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  &__item {
+    margin: 0 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__user-menu-activator {
+    margin-left: auto;
+  }
+}

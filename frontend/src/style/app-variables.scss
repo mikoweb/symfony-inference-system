@@ -1,0 +1,18 @@
+@import "material-colors/dist/colors.sass";
+
+// Fonts
+$app-primary-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// Colors
+$app-primary-color: $md-red-a700;
+
+// Layout
+$app-layout-margin: 20px;
+$app-header-height: 55px;
+$app-body-padding-top: $app-header-height + $app-layout-margin;
+$app-header-z-index: 10000;
+$app-drawer-z-index: 11000;
+
+// Form
+$app-form-margin: $app-layout-margin;
+$app-form-group-margin: 15px;

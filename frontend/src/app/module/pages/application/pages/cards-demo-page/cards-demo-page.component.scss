@@ -1,0 +1,31 @@
+@import "../../../../style/variables";
+
+.card-demo {
+  &__image {
+    background: var(--md-grey-800);
+
+    @media (min-width: #{map-get($grid-breakpoints, "xs")}) {
+      min-height: 100px;
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, "sm")}) {
+      min-height: 123px;
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, "md")}) {
+      min-height: 108px;
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, "lg")}) {
+      min-height: 108px;
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, "xl")}) {
+      min-height: 130px;
+    }
+
+    @media (min-width: #{map-get($grid-breakpoints, "xxl")}) {
+      min-height: 153px;
+    }
+  }
+}
