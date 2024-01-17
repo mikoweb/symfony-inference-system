@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { UserFullNameDisplayComponent } from './user-full-name-display.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
-describe('UserFullNameDisplayComponent', () => {
-  let component: UserFullNameDisplayComponent;
-  let fixture: ComponentFixture<UserFullNameDisplayComponent>;
+describe('PageNotFoundComponent', () => {
+  let component: PageNotFoundComponent;
+  let fixture: ComponentFixture<PageNotFoundComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserFullNameDisplayComponent ],
+      declarations: [ PageNotFoundComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(UserFullNameDisplayComponent);
+    fixture = TestBed.createComponent(PageNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

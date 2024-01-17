@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { LoremIpsumPageComponent } from './lorem-ipsum-page.component';
+import { DefaultPageComponent } from './default-page.component';
 
-describe('LoremIpsumPageComponent', () => {
-  let component: LoremIpsumPageComponent;
-  let fixture: ComponentFixture<LoremIpsumPageComponent>;
+describe('DefaultPageComponent', () => {
+  let component: DefaultPageComponent;
+  let fixture: ComponentFixture<DefaultPageComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoremIpsumPageComponent ],
+      declarations: [ DefaultPageComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LoremIpsumPageComponent);
+    fixture = TestBed.createComponent(DefaultPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

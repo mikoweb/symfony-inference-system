@@ -8,13 +8,14 @@
   z-index: $app-header-z-index;
 
   &__title {
-    font-size: 1.4rem;
+    font-size: 1.14rem;
     line-height: 1.5;
     text-transform: uppercase;
   }
 }
 
 .app-header-toolbar {
+  display: flex;
   height: $app-header-height;
   background: $app-primary-color;
   color: #fff;
@@ -37,7 +38,26 @@
     }
   }
 
-  &__user-menu-activator {
+  &__social {
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    ion-fab-button {
+      margin: 0;
+    }
+  }
+
+  &__social-link {
+    color: #fff;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

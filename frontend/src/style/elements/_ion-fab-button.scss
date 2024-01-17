@@ -1,0 +1,13 @@
+ion-fab-button {
+  &.icon-button {
+    --background: none;
+    --background-activated: none;
+    --background-hover: none;
+    --box-shadow: none;
+    --color: #000;
+
+    &--white {
+      --color: #fff;
+    }
+  }
+}
