@@ -15,7 +15,7 @@ final class InferenceEngineDataScienceResultsTest extends AbstractInferenceEngin
     {
         $filter = new LanguageFilter(
             usage: new LanguageUsageList([
-                LanguageUsageEnum::SCIENTITIFIC,
+                LanguageUsageEnum::SCIENTIFIC,
                 LanguageUsageEnum::STATISTICS,
                 LanguageUsageEnum::AI,
             ]),

@@ -1,0 +1,29 @@
+language_filter_option:
+    and: AND
+    or: OR
+    very_high: Bardzo wysoka
+    high: Wysoka
+    medium: Średnia
+    low: Niska
+    very_low: Bardzo niska
+    none: Brak
+    object_oriented: Zorientowany obiektowo
+    functional: Funkcyjny
+    procedural: Proceduralny
+    reflective: Mechanizm refleksji
+    event_driven: Event-driven programming
+    web: Web
+    mobile: Mobile
+    desktop: Desktop
+    general: Ogólnego zastosowania
+    embedded: Systemy wbudowane
+    server_side: Server-side
+    client_side: Client-side
+    business: Biznes
+    shell: Powłoka
+    scripting: Skrypty
+    games: Gry
+    ai: AI
+    databases: Bazy danych
+    scientific: Naukowe
+    statistics: Statystyka

@@ -3,8 +3,10 @@
 namespace App\Module\LanguageChoice\Application\Controller;
 
 use App\Module\Core\Application\Api\Controller\AbstractAppRestController;
+use App\Module\LanguageChoice\Application\Logic\DataFactory\LanguageFilterOptionsFactory;
 use App\Module\LanguageChoice\Application\Logic\DataFactory\LanguageInferenceResultToDtoFactory;
 use App\Module\LanguageChoice\Domain\Dto\LanguageFilterDto;
+use App\Module\LanguageChoice\Domain\Dto\LanguageFilterOptionsDto;
 use App\Module\LanguageChoice\Domain\Dto\LanguageInferenceResultDto;
 use App\Module\LanguageChoice\Domain\LanguageInferenceEngineInterface;
 use App\Module\LanguageChoice\Domain\LanguageInferenceResult;
@@ -42,5 +44,19 @@ final class LanguageChoiceController extends AbstractAppRestController
             fn (LanguageInferenceResult $result) => $resultToDtoFactory->createDto($result),
             $results->toArray()
         )));
+    }
+
+    #[OA\Tag(name: 'LanguageChoice')]
+    #[OA\Response(
+        response: 200,
+        description: 'Get filter options.',
+        content: new OA\JsonContent(
+            type: 'object',
+            anyOf: [new OA\Schema(ref: new Model(type: LanguageFilterOptionsDto::class))]
+        )
+    )]
+    public function getFilterOptions(LanguageFilterOptionsFactory $languageFilterOptionsFactory): Response
+    {
+        return $this->handleView($this->view($languageFilterOptionsFactory->createOptions()));
     }
 }

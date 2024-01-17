@@ -21,6 +21,6 @@ enum LanguageUsageEnum: string
     case GAMES = 'games';
     case AI = 'ai';
     case DATABASES = 'databases';
-    case SCIENTITIFIC = 'scientific';
+    case SCIENTIFIC = 'scientific';
     case STATISTICS = 'statistics';
 }

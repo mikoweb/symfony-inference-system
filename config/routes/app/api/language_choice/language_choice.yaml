@@ -2,3 +2,8 @@ api_language_choice_inference:
     path: /inference
     controller: App\Module\LanguageChoice\Application\Controller\LanguageChoiceController::startInference
     methods: [POST]
+
+api_language_choice_filter_options:
+    path: /filter-options
+    controller: App\Module\LanguageChoice\Application\Controller\LanguageChoiceController::getFilterOptions
+    methods: [GET]

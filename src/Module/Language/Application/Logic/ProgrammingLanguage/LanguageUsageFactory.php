@@ -21,7 +21,7 @@ final class LanguageUsageFactory implements LanguageUsageFactoryInterface
         [['game'], LanguageUsageEnum::GAMES],
         [['artificial', 'ai'], LanguageUsageEnum::AI],
         [['database', 'db'], LanguageUsageEnum::DATABASES],
-        [['scientific', 'science'], LanguageUsageEnum::SCIENTITIFIC],
+        [['scientific', 'science'], LanguageUsageEnum::SCIENTIFIC],
         [['statistic', 'stat'], LanguageUsageEnum::STATISTICS],
     ];
 
