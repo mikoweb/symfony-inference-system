@@ -2,8 +2,6 @@
 
 namespace App\Module\Language\Infrastructure\Query;
 
-use App\Module\Language\Domain\MostPopular\MostPopularList;
-use App\Module\Language\Domain\MostPopular\MostPopularValue;
 use App\Module\Language\Domain\Query\GetMostPopularMaxYearQueryInterface;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
 
@@ -19,14 +17,7 @@ final class GetMostPopularMaxYearQuery implements GetMostPopularMaxYearQueryInte
     {
         if (is_null(self::$maxYear)) {
             $mostPopular = $this->getMostPopularQuery->getMostPopular();
-
-            if ($mostPopular->isEmpty()) {
-                self::$maxYear = 0;
-            } else {
-                /** @var MostPopularList $list */
-                $list = array_values($mostPopular->toArray())[0];
-                self::$maxYear = $list->reduce(fn (int $max, MostPopularValue $value) => max($value->year, $max), 0);
-            }
+            self::$maxYear = $mostPopular->getMaxYear();
         }
 
         return self::$maxYear;
