@@ -9,13 +9,17 @@ use App\Module\Language\Domain\ProgrammingLanguage\ProgrammingLanguagesDataset;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
 use App\Module\LanguageChoice\Domain\Dto\LanguageInferenceResultDto;
 use App\Module\LanguageChoice\Domain\LanguageInferenceResult;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
+use function Symfony\Component\String\u;
 
 final class LanguageInferenceResultToDtoFactory
 {
     private static ?ProgrammingLanguagesDataset $languages = null;
 
     public function __construct(
-        private readonly GetLanguagesQueryInterface $getLanguagesQuery
+        private readonly GetLanguagesQueryInterface $getLanguagesQuery,
+        private readonly TranslatorInterface $translator
     ) {}
 
     public function createDto(LanguageInferenceResult $result): LanguageInferenceResultDto
@@ -27,11 +31,11 @@ final class LanguageInferenceResultToDtoFactory
             score: $result->score,
             name: $language->name ?? '',
             usage: array_map(
-                fn (LanguageUsageEnum $usage) => $usage->value,
+                fn (LanguageUsageEnum $usage) => $this->translateValue($usage->value),
                 $language?->usage->toArray() ?? []
             ),
             features: array_map(
-                fn (LanguageFeatureEnum $feature) => $feature->value,
+                fn (LanguageFeatureEnum $feature) => $this->translateValue($feature->value),
                 $language?->features->toArray() ?? []
             ),
         );
@@ -49,5 +53,12 @@ final class LanguageInferenceResultToDtoFactory
         }
 
         return self::$languages;
+    }
+
+    private function translateValue(string $value): string
+    {
+        $key = u($value)->lower()->snake()->toString();
+
+        return $this->translator->trans("language_filter_option.$key");
     }
 }
