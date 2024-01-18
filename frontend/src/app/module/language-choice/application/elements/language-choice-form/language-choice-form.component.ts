@@ -12,6 +12,10 @@ import CommandBus from '@app/module/core/application/command-bus/command-bus';
 import SubmitLanguageChoiceFormCommand
   from '@app/module/language-choice/application/command/submit-language-choice-form-command';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  LanguageUserExperienceFilterComponent
+} from '@app/module/language-choice/application/elements/language-user-experience-filter/language-user-experience-filter.component';
+import UserExperienceFilterItem from '@app/module/language-choice/domain/filter/user-experience-filter-item';
 
 const { encapsulation, schemas } = customElementParams;
 
@@ -22,7 +26,7 @@ const { encapsulation, schemas } = customElementParams;
   standalone: true,
   encapsulation,
   schemas,
-  imports: [IonicModule, ReactiveFormsModule, NgForOf, TranslateModule],
+  imports: [IonicModule, ReactiveFormsModule, NgForOf, TranslateModule, LanguageUserExperienceFilterComponent],
 })
 @CustomElement()
 export class LanguageChoiceFormComponent extends CustomElementBaseComponent implements OnInit {
@@ -38,6 +42,7 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
     featuresMode: new FormControl(),
     minimumPerformanceLevel: new FormControl(),
     minimumPopularityLevel: new FormControl(),
+    userExperienceFilterItemList: new FormControl(),
   });
 
   protected readonly formPackage = new FormGroup({
@@ -138,5 +143,9 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
     this.form.get('featuresMode')?.setValue(formData.usageMode ?? 'and');
     this.form.get('minimumPerformanceLevel')?.setValue(formData.minimumPerformanceLevel ?? null);
     this.form.get('minimumPopularityLevel')?.setValue(formData.minimumPopularityLevel ?? null);
+  }
+
+  protected onUserExperienceUpdated(items: UserExperienceFilterItem[]): void {
+    this.form.get('userExperienceFilterItemList')?.setValue(items);
   }
 }

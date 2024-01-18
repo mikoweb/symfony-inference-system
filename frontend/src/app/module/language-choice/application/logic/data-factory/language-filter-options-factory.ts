@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import LanguageFilterOptionsDto from '@app/module/language-choice/domain/dto/language-filter-options-dto';
 import SelectOptionDto from '@app/module/language-choice/domain/dto/select-option-dto';
-import FilterPackageMap from '@app/module/language-choice/domain/filter/FilterPackageMap';
+import FilterPackageMap from '@app/module/language-choice/domain/filter/filter-package-map';
 
 @Injectable({
   providedIn: 'root',

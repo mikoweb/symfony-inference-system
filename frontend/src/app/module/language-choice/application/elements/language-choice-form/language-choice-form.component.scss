@@ -11,5 +11,9 @@
     padding: 10px 0;
     border-top: 1px solid $md-grey-300;
     border-bottom: 1px solid $md-grey-300;
+
+    @media (max-width: 767.98px) {
+      justify-content: flex-start;
+    }
   }
 }

@@ -1,0 +1,45 @@
+.user-experience-filter {
+  margin: 10px 0;
+
+  &__add-button {
+    --background: var(--md-green-500);
+  }
+
+  &__add-button-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 0 12px 0 0;
+    font-size: 0.9rem;
+  }
+
+  &__add-button-label {
+    margin-left: 5px;
+  }
+
+  &__delete-button {
+    --color: var(--md-red-400) !important;
+  }
+}
+
+.user-experience-filter-items {
+  ion-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  ion-item {
+    --padding-start: 20px;
+    --inner-padding-end: 0;
+
+    &:first-child {
+      margin-top: 10px;
+    }
+  }
+}

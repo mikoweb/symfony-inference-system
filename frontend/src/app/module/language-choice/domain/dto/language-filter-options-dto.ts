@@ -1,5 +1,5 @@
 import SelectOptionDto from '@app/module/language-choice/domain/dto/select-option-dto';
-import FilterPackageMap from '@app/module/language-choice/domain/filter/FilterPackageMap';
+import FilterPackageMap from '@app/module/language-choice/domain/filter/filter-package-map';
 
 export default class LanguageFilterOptionsDto extends Map<string, SelectOptionDto[] | FilterPackageMap> {
   public getOptions(name: string): SelectOptionDto[] {

@@ -75,6 +75,12 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-xs-12 col-lg-6 order-last order-lg-0">
+        <app-language-user-experience-filter
+          (itemsUpdatedEvent)="onUserExperienceUpdated($event)"
+          [userExperienceLevelOptions]="options?.getOptions('userExperienceLevelOptions') ?? []">
+        </app-language-user-experience-filter>
+      </div>
       <div class="col-xs-12 col-lg-6" [formGroup]="formPackage">
         <ion-select
           label="{{ 'language_choice_form.package' | translate }}"

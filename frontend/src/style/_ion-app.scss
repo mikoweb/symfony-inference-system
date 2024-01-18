@@ -5,4 +5,5 @@ ion-app, .ion-page {
   position: static;
   overflow: visible;
   contain: none;
+  z-index: $app-ion-app-z-index;
 }

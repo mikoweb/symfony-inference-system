@@ -1,0 +1,79 @@
+<div class="user-experience-filter">
+  <div class="user-experience-filter__add-button-container ion-activatable" (click)="onAddClick()">
+    <ion-fab-button
+      class="user-experience-filter__add-button"
+      size="small"
+      role="button"
+      aria-label="Add user experience">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <span class="user-experience-filter__add-button-label">
+      Dodaj doświadczenie w języku
+    </span>
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+  <div class="user-experience-filter-items">
+    <ion-list>
+      <ng-template ngFor let-item [ngForOf]="items" let-i="index">
+        <ion-item>
+          <ion-label>{{ item.langName }} - {{ item.levelLabel }}</ion-label>
+          <ion-fab-button
+            class="icon-button user-experience-filter__delete-button"
+            size="small"
+            role="button"
+            aria-label="Delete"
+            (click)="onDeleteClick(item)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </ng-template>
+    </ion-list>
+  </div>
+</div>
+<ion-modal>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Dodaj doświadczenie</ion-title>
+        <ion-buttons slot="end">
+          <ion-button [strong]="true" (click)="onModalCancel()">Zamknij</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form [formGroup]="form">
+        <ion-list>
+          <ion-item>
+            <ion-select
+              required
+              label="Język"
+              placeholder="wybierz język"
+              formControlName="langId"
+              interface="action-sheet">
+              <ng-template ngFor let-language [ngForOf]="languages" let-i="index">
+                <ion-select-option [value]="language.id">{{ language.name }}</ion-select-option>
+              </ng-template>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-select
+              required
+              label="Znajomość języka"
+              placeholder="wybierz poziom znajomości"
+              formControlName="levelKey"
+              interface="action-sheet">
+              <ng-template ngFor let-option [ngForOf]="userExperienceLevelOptions" let-i="index">
+                <ion-select-option [value]="option.value">{{ option.label }}</ion-select-option>
+              </ng-template>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <div class="form-group" style="display: flex; justify-content: flex-end;">
+          <ion-button fill="outline" color="success" (click)="onSubmitForm()" [disabled]="!this.form.valid">
+            Dodaj
+          </ion-button>
+        </div>
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>
