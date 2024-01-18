@@ -12,6 +12,7 @@ language_filter_option:
     procedural: Proceduralny
     reflective: Mechanizm refleksji
     event_driven: Event-driven programming
+    data_science: Data Science
     web: Web
     mobile: Mobile
     desktop: Desktop

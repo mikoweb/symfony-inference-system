@@ -67,7 +67,7 @@ final readonly class LanguageFilterOptionsFactory
 
         foreach (FilterPackageHashMap::getCommonMap() as $key => $filter) {
             /* @var LanguageFilter $filter */
-            $packages[] = new PackageDto($key, $filter->toDto());
+            $packages[] = new PackageDto($this->transformLabel($key), $filter->toDto());
         }
 
         return $packages;
