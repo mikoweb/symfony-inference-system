@@ -4,7 +4,7 @@
       <h2 class="app-section-title">{{ 'language-inference-results.title' | translate }}</h2>
       <div class="row">
         <ng-template ngFor let-result [ngForOf]="store.results" let-i="index">
-          <div class="col-xs-12 col-sm-6 col-lg-3 app-language-inference-results__cell">
+          <div class="col-xs-12 col-sm-6 col-xl-3 app-language-inference-results__cell">
             <ion-card role="listitem" class="app-language-inference-result">
               <div class="app-language-inference-result__handle">
                 <ng-template [ngIf]="store.results && store.results[0].score > 0.000001">
