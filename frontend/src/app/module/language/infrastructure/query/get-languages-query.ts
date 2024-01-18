@@ -14,7 +14,7 @@ export default class GetLanguagesQuery {
 
   public async getLanguages(): Promise<LanguageData[] | null> {
     if (GetLanguagesQuery.languages === null) {
-      const response = await this.client.method.get('language');
+      const response = await this.client.method.get('language/');
 
       GetLanguagesQuery.languages = Array.isArray(response.data)
         ? response.data.map((language: any) => LanguageData.createFromObject(language))
