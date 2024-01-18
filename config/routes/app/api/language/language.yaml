@@ -1,0 +1,4 @@
+api_language_index:
+    path: /
+    controller: App\Module\Language\Application\Controller\LanguageController::getLanguages
+    methods: [GET]
