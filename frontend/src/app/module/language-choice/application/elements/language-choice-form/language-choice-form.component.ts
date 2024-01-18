@@ -40,6 +40,10 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
     minimumPopularityLevel: new FormControl(),
   });
 
+  protected readonly formPackage = new FormGroup({
+    package: new FormControl(),
+  });
+
   private readonly nullableProperties: string[] = [
     'usage',
     'features',
@@ -63,6 +67,7 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
   async ngOnInit(): Promise<void> {
     this.form.get('usageMode')?.setValue('and');
     this.form.get('featuresMode')?.setValue('and');
+    this.clearPackage();
     this.options = await this.optionsQuery.getOptions();
   }
 
@@ -79,6 +84,10 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
   }
 
   protected async onSubmit(): Promise<void> {
+    await this.submit();
+  }
+
+  protected async submit(): Promise<void> {
     if (this.isFilled()) {
       this.formDisabled = true;
       await this.commandBus.execute(new SubmitLanguageChoiceFormCommand(this.form.value));
@@ -92,5 +101,42 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
     if (Array.isArray(value) && value.length === 0) {
       this.form.get(propertyName)?.setValue(null);
     }
+  }
+
+  protected clearPackage(): void {
+    this.formPackage.get('package')?.setValue(null);
+  }
+
+  protected getPackageOptionValue(name: string): object | null {
+    return this.options?.getFilterPackages()?.get(name) ?? null;
+  }
+
+  protected getPackageNames(): string[] {
+    const names: string[] = [];
+
+    for (const name of this.options?.getFilterPackages()?.keys() ?? []) {
+      names.push(name);
+    }
+
+    return names;
+  }
+
+  protected async onPackageChange(event: any): Promise<void> {
+    const formData = event.detail.value;
+    this.clearPackage();
+
+    if (formData !== null) {
+      this.setFormData(formData);
+      await this.submit();
+    }
+  }
+
+  protected setFormData(formData: any): void {
+    this.form.get('usage')?.setValue(formData.usage ?? null);
+    this.form.get('usageMode')?.setValue(formData.usageMode ?? 'and');
+    this.form.get('features')?.setValue(formData.features ?? null);
+    this.form.get('featuresMode')?.setValue(formData.usageMode ?? 'and');
+    this.form.get('minimumPerformanceLevel')?.setValue(formData.minimumPerformanceLevel ?? null);
+    this.form.get('minimumPopularityLevel')?.setValue(formData.minimumPopularityLevel ?? null);
   }
 }

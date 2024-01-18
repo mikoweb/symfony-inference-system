@@ -17,6 +17,8 @@
     "choice_features": "wybierz cechy",
     "minimumPerformance": "Minimalna wydajność",
     "minimumPopularity": "Minimalna popularność",
+    "package": "Zestaw filtrów",
+    "choice_package": "możesz wybrać gotowy zestaw",
     "button": "Znajdź optymalny"
   },
   "language-inference-results": {
