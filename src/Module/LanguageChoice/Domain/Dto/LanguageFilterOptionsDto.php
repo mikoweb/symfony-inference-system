@@ -39,5 +39,10 @@ final readonly class LanguageFilterOptionsDto
          * @var SelectOptionDto[]
          */
         public array $userExperienceLevelOptions,
+
+        /**
+         * @var PackageDto[]
+         */
+        public array $filterPackages,
     ) {}
 }

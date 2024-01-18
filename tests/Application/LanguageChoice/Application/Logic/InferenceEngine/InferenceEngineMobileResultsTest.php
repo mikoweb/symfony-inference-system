@@ -2,22 +2,14 @@
 
 namespace App\Tests\Application\LanguageChoice\Application\Logic\InferenceEngine;
 
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
-use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
-use App\Module\LanguageChoice\Domain\Fuzzy\PopularityLevelEnum;
-use App\Module\LanguageChoice\Domain\LanguageFilter;
+use App\Module\LanguageChoice\Domain\Filter\FilterPackageHashMap;
+use App\Module\LanguageChoice\Domain\Filter\FilterPackageKeyEnum;
 
 final class InferenceEngineMobileResultsTest extends AbstractInferenceEngineTest
 {
     public function testResults(): void
     {
-        $filter = new LanguageFilter(
-            usage: new LanguageUsageList([LanguageUsageEnum::MOBILE]),
-            minimumPerformanceLevel: PerformanceLevelEnum::MEDIUM,
-            minimumPopularityLevel: PopularityLevelEnum::MEDIUM,
-        );
-
+        $filter = FilterPackageHashMap::getCommonMap()->get(FilterPackageKeyEnum::MOBILE->value);
         $results = $this->getEngine()->createResults($filter);
 
         $this->assertCount(9, $results);

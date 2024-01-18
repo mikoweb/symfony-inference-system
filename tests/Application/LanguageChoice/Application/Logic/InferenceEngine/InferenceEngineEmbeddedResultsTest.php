@@ -2,20 +2,14 @@
 
 namespace App\Tests\Application\LanguageChoice\Application\Logic\InferenceEngine;
 
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
-use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageList;
-use App\Module\LanguageChoice\Domain\Fuzzy\PerformanceLevelEnum;
-use App\Module\LanguageChoice\Domain\LanguageFilter;
+use App\Module\LanguageChoice\Domain\Filter\FilterPackageHashMap;
+use App\Module\LanguageChoice\Domain\Filter\FilterPackageKeyEnum;
 
 final class InferenceEngineEmbeddedResultsTest extends AbstractInferenceEngineTest
 {
     public function testResults(): void
     {
-        $filter = new LanguageFilter(
-            usage: new LanguageUsageList([LanguageUsageEnum::EMBEDDED]),
-            minimumPerformanceLevel: PerformanceLevelEnum::VERY_HIGH,
-        );
-
+        $filter = FilterPackageHashMap::getCommonMap()->get(FilterPackageKeyEnum::EMBEDDED->value);
         $results = $this->getEngine()->createResults($filter);
 
         $this->assertCount(6, $results);
