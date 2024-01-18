@@ -3,6 +3,9 @@ import {
   LanguageChoiceFormComponent
 } from '@app/module/language-choice/application/elements/language-choice-form/language-choice-form.component';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  LanguageInferenceResultsComponent
+} from '@app/module/language-choice/application/elements/language-inference-results/language-inference-results.component';
 
 @Component({
   selector: 'app-default-page',
@@ -10,7 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./default-page.component.scss'],
   imports: [
     LanguageChoiceFormComponent,
-    TranslateModule
+    TranslateModule,
+    LanguageInferenceResultsComponent,
   ],
   standalone: true
 })

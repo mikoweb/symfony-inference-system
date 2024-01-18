@@ -18,5 +18,11 @@
     "minimumPerformance": "Minimalna wydajność",
     "minimumPopularity": "Minimalna popularność",
     "button": "Znajdź optymalny"
+  },
+  "language-inference-results": {
+    "title": "Wyniki",
+    "no_results": "Brak wyników.",
+    "usage": "Zastosowanie",
+    "features": "Cechy"
   }
 }

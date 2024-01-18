@@ -1,0 +1,70 @@
+.app-language-inference-results {
+  display: block;
+  margin: 20px 0 0;
+
+  &__no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  &__cell {
+    padding: 12px 0;
+  }
+}
+
+.app-language-inference-result {
+  display: block;
+  width: 100%;
+  min-height: 200px;
+  height: 100%;
+
+  &__handle {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  &__score {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 3px 7px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin: 5px 0 2px;
+  }
+
+  &__position {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+}
+
+.app-language-inference-parameter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 0.85rem;
+
+  &__name {
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  &__value {
+    font-size: 0.9em;
+    text-align: right;
+  }
+}
+
+.app-language-inference-parameters {
+  margin-top: 25px !important;
+}

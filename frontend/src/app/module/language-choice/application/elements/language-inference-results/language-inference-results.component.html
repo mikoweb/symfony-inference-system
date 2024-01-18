@@ -1,0 +1,61 @@
+<div *mobxAutorun="{ detach: false }">
+  <div class="app-language-inference-results">
+    <ng-template [ngIf]="store.results && store.results.length > 0">
+      <h2 class="app-section-title">{{ 'language-inference-results.title' | translate }}</h2>
+      <div class="row">
+        <ng-template ngFor let-result [ngForOf]="store.results" let-i="index">
+          <div class="col-xs-12 col-sm-6 col-lg-3 app-language-inference-results__cell">
+            <ion-card role="listitem" class="app-language-inference-result">
+              <div class="app-language-inference-result__handle">
+                <ng-template [ngIf]="store.results && store.results[0].score > 0.000001">
+                  <div class="app-language-inference-result__position">{{ i + 1 }}</div>
+                </ng-template>
+                <ion-card-header>
+                  <ion-card-title role="heading">
+                    <span>{{ result.name }}</span>
+                  </ion-card-title>
+                  <ng-template [ngIf]="store.results && store.results[0].score > 0.000001">
+                    <ion-card-subtitle>
+                    <span class="app-language-inference-result__score" style="{{ getScoreStyle(result.score) }}">
+                      {{ result.score * 100 | number :'1.4' }}
+                    </span>
+                    </ion-card-subtitle>
+                  </ng-template>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list class="app-language-inference-parameters">
+                    <ion-item>
+                      <div class="app-language-inference-parameter">
+                        <span class="app-language-inference-parameter__name">
+                          {{ 'language-inference-results.usage' | translate }}:
+                        </span>
+                        <span class="app-language-inference-parameter__value">
+                          {{ result.usage.join(', ') }}
+                        </span>
+                      </div>
+                    </ion-item>
+                    <ion-item>
+                      <div class="app-language-inference-parameter">
+                        <span class="app-language-inference-parameter__name">
+                          {{ 'language-inference-results.features' | translate }}:
+                        </span>
+                        <span class="app-language-inference-parameter__value">
+                          {{ result.features.join(', ') }}
+                        </span>
+                      </div>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </div>
+            </ion-card>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="store.results && store.results.length === 0">
+      <div class="app-language-inference-results__no-results">
+        <span>{{ 'language-inference-results.no_results' | translate }}</span>
+      </div>
+    </ng-template>
+  </div>
+</div>
