@@ -8,7 +8,7 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <span class="user-experience-filter__add-button-label">
-      Dodaj doświadczenie w języku
+      {{ 'user_experience_filter.button_add' | translate }}
     </span>
     <ion-ripple-effect></ion-ripple-effect>
   </div>
@@ -34,9 +34,11 @@
   <ng-template>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Dodaj doświadczenie</ion-title>
+        <ion-title>{{ 'user_experience_filter.modal_title' | translate }}</ion-title>
         <ion-buttons slot="end">
-          <ion-button [strong]="true" (click)="onModalCancel()">Zamknij</ion-button>
+          <ion-button [strong]="true" (click)="onModalCancel()">
+            {{ 'user_experience_filter.close' | translate }}
+          </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -46,8 +48,8 @@
           <ion-item>
             <ion-select
               required
-              label="Język"
-              placeholder="wybierz język"
+              label="{{ 'user_experience_filter.language_select_label' | translate }}"
+              placeholder="{{ 'user_experience_filter.language_select_placeholder' | translate }}"
               formControlName="langId"
               interface="action-sheet">
               <ng-template ngFor let-language [ngForOf]="languages" let-i="index">
@@ -58,8 +60,8 @@
           <ion-item>
             <ion-select
               required
-              label="Znajomość języka"
-              placeholder="wybierz poziom znajomości"
+              label="{{ 'user_experience_filter.level_select_label' | translate }}"
+              placeholder="{{ 'user_experience_filter.level_select_placeholder' | translate }}"
               formControlName="levelKey"
               interface="action-sheet">
               <ng-template ngFor let-option [ngForOf]="userExperienceLevelOptions" let-i="index">
@@ -70,7 +72,7 @@
         </ion-list>
         <div class="form-group" style="display: flex; justify-content: flex-end;">
           <ion-button fill="outline" color="success" (click)="onSubmitForm()" [disabled]="!this.form.valid">
-            Dodaj
+            {{ 'user_experience_filter.modal_button_add' | translate }}
           </ion-button>
         </div>
       </form>

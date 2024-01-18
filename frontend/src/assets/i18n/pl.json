@@ -26,5 +26,15 @@
     "no_results": "Brak wyników.",
     "usage": "Zastosowanie",
     "features": "Cechy"
+  },
+  "user_experience_filter": {
+    "button_add": "Dodaj doświadczenie w języku",
+    "modal_title": "Dodaj doświadczenie",
+    "close": "Zamknij",
+    "modal_button_add": "Dodaj",
+    "language_select_label": "Język",
+    "language_select_placeholder": "wybierz język",
+    "level_select_label": "Znajomość języka",
+    "level_select_placeholder": "wybierz poziom znajomości"
   }
 }
