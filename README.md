@@ -82,7 +82,7 @@ To run the frontend, execute the following commands:
     npm install
     npm run start
 
-The backend is available at:
+The frontend is available at:
 
     http://localhost:4200
 
