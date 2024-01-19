@@ -72,11 +72,11 @@ Go to frontend directory:
 
     cd frontend
 
-set api url in the environment variable, i.e. in the file `src/environments/environment.ts`:
+Set api url in the environment variable, i.e. in the file `src/environments/environment.ts`:
 
     apiBaseUrl: 'http://localhost:8741'    
 
-To run the backend, execute the following commands:
+To run the frontend, execute the following commands:
 
     nvm use 20
     npm install
