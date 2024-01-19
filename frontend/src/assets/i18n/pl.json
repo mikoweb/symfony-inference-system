@@ -15,11 +15,13 @@
     "method": "Metoda",
     "features": "Cechy",
     "choice_features": "wybierz cechy",
-    "minimumPerformance": "Minimalna wydajność",
-    "minimumPopularity": "Minimalna popularność",
+    "minimum_performance": "Minimalna wydajność",
+    "minimum_popularity": "Minimalna popularność",
     "package": "Zestaw filtrów",
     "choice_package": "możesz wybrać gotowy zestaw",
-    "button": "Znajdź optymalny"
+    "button": "Znajdź optymalny",
+    "popularity_for_year": "Popularność - Rok",
+    "forecast_data": "Dane prognozowane"
   },
   "language-inference-results": {
     "title": "Wyniki",

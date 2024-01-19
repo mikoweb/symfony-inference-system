@@ -42,6 +42,7 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
     featuresMode: new FormControl(),
     minimumPerformanceLevel: new FormControl(),
     minimumPopularityLevel: new FormControl(),
+    popularityForecastYear: new FormControl(),
     userExperienceFilterItemList: new FormControl(),
   });
 
@@ -146,6 +147,6 @@ export class LanguageChoiceFormComponent extends CustomElementBaseComponent impl
   }
 
   protected onUserExperienceUpdated(items: UserExperienceFilterItem[]): void {
-    this.form.get('userExperienceFilterItemList')?.setValue(items);
+    this.form.get('userExperienceFilterItemList')?.setValue(items.length > 0 ? items : null);
   }
 }

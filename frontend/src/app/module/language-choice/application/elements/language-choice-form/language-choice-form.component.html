@@ -51,7 +51,7 @@
     <div class="row">
       <div class="col-xs-12 col-lg-6">
         <ion-select
-          label="{{ 'language_choice_form.minimumPerformance' | translate }}"
+          label="{{ 'language_choice_form.minimum_performance' | translate }}"
           label-placement="floating"
           formControlName="minimumPerformanceLevel"
           interface="action-sheet">
@@ -63,7 +63,7 @@
       </div>
       <div class="col-xs-12 col-lg-6">
         <ion-select
-          label="{{ 'language_choice_form.minimumPopularity' | translate }}"
+          label="{{ 'language_choice_form.minimum_popularity' | translate }}"
           label-placement="floating"
           formControlName="minimumPopularityLevel"
           interface="action-sheet">
@@ -97,6 +97,19 @@
       </div>
     </div>
     <div class="app-language-choice-form__button">
+      <ion-select
+        class="app-language-choice-form__for-year-select"
+        label="{{ 'language_choice_form.popularity_for_year' | translate }}"
+        label-placement="floating"
+        formControlName="popularityForecastYear"
+        interface="action-sheet">
+        <ion-select-option [value]="null">2023</ion-select-option>
+        <ng-template ngFor let-option [ngForOf]="options?.getOptions('popularityForecastYears')" let-i="index">
+          <ion-select-option [value]="option.value">
+            {{ option.label }} - {{ 'language_choice_form.forecast_data' | translate }}
+          </ion-select-option>
+        </ng-template>
+      </ion-select>
       <ion-button
         fill="outline"
         (click)="onSubmit()"

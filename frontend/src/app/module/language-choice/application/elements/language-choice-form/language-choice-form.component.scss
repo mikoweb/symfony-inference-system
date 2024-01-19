@@ -6,14 +6,28 @@
   &__button {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 20px;
     padding: 10px 0;
     border-top: 1px solid $md-grey-300;
     border-bottom: 1px solid $md-grey-300;
 
-    @media (max-width: 767.98px) {
+    @media (max-width: 555px) {
       justify-content: flex-start;
+      flex-direction: column;
+
+      ion-button {
+        height: 55px;
+      }
+    }
+  }
+
+  &__for-year-select {
+    width: 250px;
+
+    @media (max-width: 555px) {
+      width: 100%;
+      margin-bottom: 10px;
     }
   }
 }
