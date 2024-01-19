@@ -119,6 +119,7 @@ final readonly class ItemsFactory
 
         /** @var MostPopularList $list */
         $list = $mostPopular->get($langId);
+
         return is_null($filter->popularityForecastYear)
             ? $list->last()?->percentageValue ?? 0.0
             : $list->where('year', $filter->popularityForecastYear)[0]?->percentageValue ?? 0.0;
