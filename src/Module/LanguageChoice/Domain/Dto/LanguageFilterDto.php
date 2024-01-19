@@ -52,6 +52,7 @@ final readonly class LanguageFilterDto
 
         #[Assert\Choice(callback: [PopularityLevelEnum::class, 'getAllowedValues'])]
         public ?int $minimumPopularityLevel = null,
+        public ?int $popularityForecastYear = null,
 
         /**
          * @var UserExperienceFilterItem[]|null
@@ -81,6 +82,7 @@ final readonly class LanguageFilterDto
             minimumPopularityLevel: !is_null($this->minimumPopularityLevel)
                 ? PopularityLevelEnum::tryFrom($this->minimumPopularityLevel)
                 : null,
+            popularityForecastYear: $this->popularityForecastYear,
             userExperienceFilterItemList: !is_null($this->userExperienceFilterItemList)
                 ? new UserExperienceFilterItemList($this->userExperienceFilterItemList)
                 : null,

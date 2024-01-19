@@ -4,6 +4,7 @@ namespace App\Module\LanguageChoice\Application\Logic\DataFactory;
 
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageFeatureEnum;
 use App\Module\Language\Domain\ProgrammingLanguage\LanguageUsageEnum;
+use App\Module\Language\Infrastructure\Query\GetPopularityForecastQuery;
 use App\Module\LanguageChoice\Domain\Dto\LanguageFilterOptionsDto;
 use App\Module\LanguageChoice\Domain\Dto\PackageDto;
 use App\Module\LanguageChoice\Domain\Dto\SelectOptionDto;
@@ -21,7 +22,8 @@ use function Symfony\Component\String\u;
 final readonly class LanguageFilterOptionsFactory
 {
     public function __construct(
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
+        private GetPopularityForecastQuery $getPopularityForecastQuery,
     ) {}
 
     public function createOptions(): LanguageFilterOptionsDto
@@ -35,6 +37,7 @@ final readonly class LanguageFilterOptionsFactory
             minimumPopularityLevelOptions: $this->createValues(PopularityLevelEnum::cases()),
             userExperienceLevelOptions: $this->createValues(UserExperienceLevelEnum::cases()),
             filterPackages: $this->createPackages(),
+            popularityForecastYears: $this->createPopularityForecastYears(),
         );
     }
 
@@ -71,5 +74,20 @@ final readonly class LanguageFilterOptionsFactory
         }
 
         return $packages;
+    }
+
+    /**
+     * @return SelectOptionDto[]
+     */
+    private function createPopularityForecastYears(): array
+    {
+        $forecast = $this->getPopularityForecastQuery->getForecast();
+        $options = [];
+
+        for ($i = $forecast->getMinYear(); $i <= $forecast->getMaxYear(); ++$i) {
+            $options[] = new SelectOptionDto($i, $i);
+        }
+
+        return $options;
     }
 }

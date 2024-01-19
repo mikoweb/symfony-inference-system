@@ -44,5 +44,10 @@ final readonly class LanguageFilterOptionsDto
          * @var PackageDto[]
          */
         public array $filterPackages,
+
+        /**
+         * @var SelectOptionDto[]
+         */
+        public array $popularityForecastYears,
     ) {}
 }

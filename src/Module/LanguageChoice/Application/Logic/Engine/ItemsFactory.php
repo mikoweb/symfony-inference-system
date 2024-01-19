@@ -2,8 +2,11 @@
 
 namespace App\Module\LanguageChoice\Application\Logic\Engine;
 
+use App\Module\Language\Domain\MostPopular\MostPopularHashMap;
+use App\Module\Language\Domain\MostPopular\MostPopularList;
 use App\Module\Language\Domain\Query\GetLanguagesQueryInterface;
 use App\Module\Language\Domain\Query\GetMostPopularQueryInterface;
+use App\Module\Language\Domain\Query\GetPopularityForecastQueryInterface;
 use App\Module\Language\Domain\Query\GetSpeedComparisonQueryInterface;
 use App\Module\Language\Infrastructure\Query\Enum\FindModeEnum;
 use App\Module\Language\Infrastructure\Query\FindLanguagesByFeaturesQuery;
@@ -21,7 +24,8 @@ final readonly class ItemsFactory
         private FindLanguagesByUsageQuery $findLanguagesByUsageQuery,
         private FindLanguagesByFeaturesQuery $findLanguagesByFeaturesQuery,
         private GetSpeedComparisonQueryInterface $getSpeedComparisonQuery,
-        private GetMostPopularQueryInterface $getMostPopularQuery
+        private GetMostPopularQueryInterface $getMostPopularQuery,
+        private GetPopularityForecastQueryInterface $getPopularityForecastQuery,
     ) {}
 
     /**
@@ -34,7 +38,6 @@ final readonly class ItemsFactory
         $items = [];
         $languages = $this->getLanguagesQuery->getLanguages();
         $speedComparison = $this->getSpeedComparisonQuery->getSpeedComparison();
-        $mostPopularQuery = $this->getMostPopularQuery->getMostPopular();
 
         if (!is_null($filter->usage)) {
             $languages = $this->findLanguagesByUsageQuery->findByUsage(
@@ -63,8 +66,7 @@ final readonly class ItemsFactory
             }
 
             if ($this->hasFeature($features, 'popularity')) {
-                $values['popularity'] = $mostPopularQuery->containsKey($id)
-                    ? ($mostPopularQuery->get($id)->last()?->percentageValue ?? 0) : 0;
+                $values['popularity'] = $this->getPopularityValue($filter, $id);
             }
 
             if ($this->hasFeature($features, 'user_experience')) {
@@ -96,5 +98,29 @@ final readonly class ItemsFactory
         } else {
             return UserExperienceLevelEnum::NONE;
         }
+    }
+
+    private function getMostPopular(LanguageFilter $filter): MostPopularHashMap
+    {
+        return is_null($filter->popularityForecastYear)
+            ? $this->getMostPopularQuery->getMostPopular()
+            : $this->getPopularityForecastQuery->getForecast();
+    }
+
+    private function getPopularityValue(
+        LanguageFilter $filter,
+        string $langId,
+    ): float {
+        $mostPopular = $this->getMostPopular($filter);
+
+        if (!$mostPopular->containsKey($langId)) {
+            return 0.0;
+        }
+
+        /** @var MostPopularList $list */
+        $list = $mostPopular->get($langId);
+        return is_null($filter->popularityForecastYear)
+            ? $list->last()?->percentageValue ?? 0.0
+            : $list->where('year', $filter->popularityForecastYear)[0]?->percentageValue ?? 0.0;
     }
 }

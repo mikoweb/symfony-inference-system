@@ -49,4 +49,42 @@ final class InferenceEnginePopularityResultsTest extends AbstractInferenceEngine
             'pascal',
         ], $results);
     }
+
+    public function testVeryHighResults2028(): void
+    {
+        $filter = new LanguageFilter(
+            minimumPopularityLevel: PopularityLevelEnum::VERY_HIGH,
+            popularityForecastYear: 2028,
+        );
+
+        $results = $this->getEngine()->createResults($filter);
+
+        $this->assertCount(134, $results);
+        $this->assertCountResultNonZero(22, $results);
+
+        $this->assertResultsOrder([
+            'python',
+            'java',
+            'javascript',
+            'c',
+            'c_plus_plus',
+            'c_sharp',
+            'r',
+            'kotlin',
+            'rust',
+            'go',
+            'php',
+            'dart',
+            'ada',
+            'powershell',
+            'matlab',
+            'lua',
+            'swift',
+            'julia',
+            'objective_c',
+            'cobol',
+            'haskell',
+            'groovy',
+        ], $results);
+    }
 }

@@ -19,6 +19,7 @@ final readonly class LanguageFilter
         public LanguageFilterModeEnum $featuresMode = LanguageFilterModeEnum::AND,
         public ?PerformanceLevelEnum $minimumPerformanceLevel = null,
         public ?PopularityLevelEnum $minimumPopularityLevel = null,
+        public ?int $popularityForecastYear = null,
         public ?UserExperienceFilterItemList $userExperienceFilterItemList = null
     ) {}
 
@@ -40,6 +41,7 @@ final readonly class LanguageFilter
             featuresMode: $this->featuresMode?->value,
             minimumPerformanceLevel: $this->minimumPerformanceLevel?->value,
             minimumPopularityLevel: $this->minimumPopularityLevel?->value,
+            popularityForecastYear: $this->popularityForecastYear,
             userExperienceFilterItemList: $this->userExperienceFilterItemList?->toArray(),
         );
     }
