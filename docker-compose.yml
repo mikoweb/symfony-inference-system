@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    app:
+        build: .
+        container_name: "symfony-inference-system"
+        environment:
+            - APP_ENV=prod
+        env_file:
+            - .env
+        volumes:
+            - ./docker/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www/symfony-inference-system
+        ports:
+            - "8741:80"
+        restart: always
+        networks:
+            - backend
+
+networks:
+    backend:
