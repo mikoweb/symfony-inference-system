@@ -26,4 +26,4 @@ Site boilerplate in Ionic and Angular with MVC and CQRS using native browser Web
 
 ## Copyrights
 
-Copyright (c) Rafał Mikołajun 2023.
+Copyright © Rafał Mikołajun 2023.
