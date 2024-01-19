@@ -56,6 +56,36 @@ They are located in the `resources/dataset` folder.
 This data is read and processed by the application only once and kept in memory. 
 Data is also cached using the `Symfony Cache Component`. In fact, they are kept in the form of PHP serialization format.
 
+## How to run
+
+Go to project directory.
+
+To run the backend, use docker:
+
+    docker compose up --build
+
+The backend is available at: 
+
+    http://localhost:8741
+
+Go to frontend directory:
+
+    cd frontend
+
+set api url in the environment variable, i.e. in the file `src/environments/environment.ts`:
+
+    apiBaseUrl: 'http://localhost:8741'    
+
+To run the backend, execute the following commands:
+
+    nvm use 20
+    npm install
+    npm run start
+
+The backend is available at:
+
+    http://localhost:4200
+
 ## Copyrights
 
 Copyright © Rafał Mikołajun 2024.
