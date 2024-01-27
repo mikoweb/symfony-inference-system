@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { LanguageUserExperienceFilterComponent } from './language-user-experience-filter.component';
+import { testProviders } from '@app/module/core/application/test/test-providers';
 
 describe('LanguageUserExperienceFilterComponent', () => {
   let component: LanguageUserExperienceFilterComponent;
@@ -9,8 +10,12 @@ describe('LanguageUserExperienceFilterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguageUserExperienceFilterComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [],
+      providers: testProviders,
+      imports: [
+        LanguageUserExperienceFilterComponent,
+        IonicModule.forRoot()
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LanguageUserExperienceFilterComponent);

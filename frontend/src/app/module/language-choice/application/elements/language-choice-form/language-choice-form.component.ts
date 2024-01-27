@@ -20,7 +20,7 @@ import UserExperienceFilterItem from '@app/module/language-choice/domain/filter/
 const { encapsulation, schemas } = customElementParams;
 
 @Component({
-  selector: LanguageChoiceFormComponent.customElementName,
+  selector: LanguageChoiceFormComponent.ngSelectorName,
   templateUrl: './language-choice-form.component.html',
   styleUrls: ['./language-choice-form.component.scss'],
   standalone: true,
@@ -31,6 +31,8 @@ const { encapsulation, schemas } = customElementParams;
 @CustomElement()
 export class LanguageChoiceFormComponent extends CustomElementBaseComponent implements OnInit {
   public static override readonly customElementName: string = 'app-language-choice-form';
+  public static override readonly ngSelectorName: string
+    = `${CustomElementBaseComponent.ngPrefix}-${LanguageChoiceFormComponent.customElementName}`;
 
   protected options?: LanguageFilterOptionsDto;
   protected formDisabled: boolean = false;

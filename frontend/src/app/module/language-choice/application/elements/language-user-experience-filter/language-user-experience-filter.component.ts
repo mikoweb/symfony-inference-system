@@ -16,7 +16,7 @@ import LanguageData from '@app/module/language/domain/language-data';
 const { encapsulation, schemas } = customElementParams;
 
 @Component({
-  selector: LanguageUserExperienceFilterComponent.customElementName,
+  selector: LanguageUserExperienceFilterComponent.ngSelectorName,
   templateUrl: './language-user-experience-filter.component.html',
   styleUrls: ['./language-user-experience-filter.component.scss'],
   standalone: true,
@@ -27,6 +27,8 @@ const { encapsulation, schemas } = customElementParams;
 @CustomElement()
 export class LanguageUserExperienceFilterComponent extends CustomElementBaseComponent implements OnInit {
   public static override readonly customElementName: string = 'app-language-user-experience-filter';
+  public static override readonly ngSelectorName: string
+    = `${CustomElementBaseComponent.ngPrefix}-${LanguageUserExperienceFilterComponent.customElementName}`;
 
   protected languages?: LanguageData[] | null;
   protected items: UserExperienceFilterItem[] = [];

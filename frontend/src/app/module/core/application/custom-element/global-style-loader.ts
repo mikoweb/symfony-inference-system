@@ -22,8 +22,12 @@ export default class GlobalStyleLoader {
     }
   }
 
-  public getStyle(): NodeListOf<HTMLStyleElement> {
-    const fragment = this.template?.content.cloneNode(true) as HTMLElement;
+  public getStyle(): NodeListOf<HTMLStyleElement> | HTMLStyleElement[] {
+    if (!this.template) {
+      return [];
+    }
+
+    const fragment = this.template.content.cloneNode(true) as HTMLElement;
 
     return fragment.querySelectorAll('style');
   }

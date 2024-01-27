@@ -17,18 +17,13 @@ configure({
 import { routes } from '@app/app.routes';
 import { AppComponent } from '@app/app.component';
 import { environment } from './environments/environment';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
+import TranslateModuleFacade from '@app/module/core/application/translator/TranslateModuleFacade';
 
 if (environment.production) {
   enableProdMode();
-}
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 registerLocaleData(localePl);
@@ -39,15 +34,7 @@ const providers: Array<Provider | EnvironmentProviders> = [
   importProvidersFrom(
     IonicModule.forRoot({}),
     HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: environment.defaultLanguage,
-      useDefaultLang: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+    TranslateModuleFacade.forRoot(),
   ),
   provideRouter(routes),
 ];

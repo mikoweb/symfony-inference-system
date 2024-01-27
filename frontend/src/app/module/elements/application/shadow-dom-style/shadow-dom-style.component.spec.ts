@@ -9,8 +9,11 @@ describe('ShadowDomStyleComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShadowDomStyleComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [],
+      imports: [
+        ShadowDomStyleComponent,
+        IonicModule.forRoot()
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShadowDomStyleComponent);

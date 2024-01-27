@@ -13,7 +13,7 @@ https://languages.mikoweb.usermd.net
 * PHP 8.3
 * Symfony Framework 6.4
 * TypeScript 5
-* Angular Framework 16
+* Angular Framework 17
 * Ionic Components
 * REST API
 * No database!

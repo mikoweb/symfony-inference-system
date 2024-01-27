@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -8,7 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     TranslateModule
   ],
-  standalone: true
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PageNotFoundComponent {
 }

@@ -12,7 +12,7 @@ import { TinyColor } from '@ctrl/tinycolor';
 const { encapsulation, schemas } = customElementParams;
 
 @Component({
-  selector: LanguageInferenceResultsComponent.customElementName,
+  selector: LanguageInferenceResultsComponent.ngSelectorName,
   templateUrl: './language-inference-results.component.html',
   styleUrls: ['./language-inference-results.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +24,8 @@ const { encapsulation, schemas } = customElementParams;
 @CustomElement()
 export class LanguageInferenceResultsComponent extends CustomElementBaseComponent {
   public static override readonly customElementName: string = 'app-language-inference-results';
+  public static override readonly ngSelectorName: string
+    = `${CustomElementBaseComponent.ngPrefix}-${LanguageInferenceResultsComponent.customElementName}`;
 
   constructor(
     ele: ElementRef,

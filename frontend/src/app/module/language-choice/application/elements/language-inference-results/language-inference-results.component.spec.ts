@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { LanguageInferenceResultsComponent } from './language-inference-results.component';
+import { testProviders } from '@app/module/core/application/test/test-providers';
 
 describe('LanguageInferenceResultsComponent', () => {
   let component: LanguageInferenceResultsComponent;
@@ -9,8 +10,12 @@ describe('LanguageInferenceResultsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguageInferenceResultsComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [],
+      providers: testProviders,
+      imports: [
+        LanguageInferenceResultsComponent,
+        IonicModule.forRoot()
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LanguageInferenceResultsComponent);

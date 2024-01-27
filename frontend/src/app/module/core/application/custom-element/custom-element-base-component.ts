@@ -4,6 +4,8 @@ import GlobalStyleLoader from '@app/module/core/application/custom-element/globa
 
 export default abstract class CustomElementBaseComponent {
   public static readonly customElementName: string;
+  public static readonly ngSelectorName: string;
+  public static readonly ngPrefix: string = 'ng';
   protected elementRef: ElementRef;
 
   public static register(): void {

@@ -20,7 +20,6 @@ Site boilerplate in Ionic and Angular with MVC and CQRS using native browser Web
 
 * [Angular Framework](https://angular.io/)
 * [Ionic Framework](https://ionicframework.com/)
-* [Material Web](https://github.com/material-components/material-web/tree/v0.27.0)
 * [Command Bus](https://www.npmjs.com/package/@tshio/command-bus)
 * [MobX](https://mobx.js.org/)
 
